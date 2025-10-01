@@ -14,13 +14,17 @@ config/name="Jamsepticeye"
 run/main_scene="uid://cv5j7wi8u8t26"
 config/features=PackedStringArray("4.5", "GL Compatibility")
 
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/diagnosticlist/plugin.cfg", "res://addons/script-ide/plugin.cfg")
+
 [file_customization]
 
 folder_colors={
 "res://Art/": "yellow",
 "res://Audio/": "orange",
+"res://Levels/": "green",
 "res://Prefabs/": "blue",
-"res://Scenes/": "green",
 "res://Scripts/": "gray"
 }
 
