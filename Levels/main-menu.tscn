@@ -1,0 +1,353 @@
+[gd_scene load_steps=8 format=3 uid="uid://dxukahearb6fw"]
+
+[ext_resource type="Script" uid="uid://boo1jtjeagqsh" path="res://Levels/popup_menu_manager.gd" id="1_gkiqq"]
+[ext_resource type="Texture2D" uid="uid://xstrim5farja" path="res://Art/UI/Vector/Extra/input_square.svg" id="1_oha0l"]
+[ext_resource type="StyleBox" uid="uid://tepnb6eelafq" path="res://Styles/button_normal.tres" id="2_uh2cu"]
+[ext_resource type="StyleBox" uid="uid://cmiyla1mseoge" path="res://Styles/button_pressed.tres" id="3_uufuj"]
+[ext_resource type="FontFile" uid="uid://boplb6ddx0gad" path="res://Art/UI/Font/Kenney Future.ttf" id="4_lyjc4"]
+[ext_resource type="Texture2D" uid="uid://bqc3ue3fsqaab" path="res://Art/UI/PNG/Yellow/Double/star.png" id="6_uh2cu"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_js1g3"]
+
+[node name="InGameUI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="popupMenu" type="MarginContainer" parent="." node_paths=PackedStringArray("menu_screen", "open_menu_screen")]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_gkiqq")
+menu_screen = NodePath("baseMenuContainer")
+open_menu_screen = NodePath("baseMenuOpenButtonContainer")
+
+[node name="baseMenuContainer" type="VBoxContainer" parent="popupMenu"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme_override_constants/separation = 40
+
+[node name="baseMenuScreen" type="MarginContainer" parent="popupMenu/baseMenuContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="popupMenu/baseMenuContainer/baseMenuScreen"]
+layout_mode = 2
+theme_override_constants/separation = 3
+
+[node name="toggleMenuButton" type="Button" parent="popupMenu/baseMenuContainer/baseMenuScreen/VBoxContainer"]
+custom_minimum_size = Vector2(100, 4)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/normal = ExtResource("2_uh2cu")
+theme_override_styles/pressed = ExtResource("3_uufuj")
+theme_override_styles/hover = ExtResource("3_uufuj")
+theme_override_styles/focus = ExtResource("3_uufuj")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="popupMenu/baseMenuContainer/baseMenuScreen/VBoxContainer"]
+self_modulate = Color(0.8509804, 0.7254902, 0.53333336, 1)
+custom_minimum_size = Vector2(400, 200)
+layout_mode = 2
+texture = ExtResource("1_oha0l")
+patch_margin_left = 7
+patch_margin_top = 7
+patch_margin_right = 7
+patch_margin_bottom = 7
+
+[node name="MarginContainer" type="MarginContainer" parent="popupMenu/baseMenuContainer/baseMenuScreen/VBoxContainer/NinePatchRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 15
+
+[node name="buttonContainer" type="VBoxContainer" parent="popupMenu/baseMenuContainer/baseMenuScreen/VBoxContainer/NinePatchRect/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+
+[node name="HBoxContainer" type="HBoxContainer" parent="popupMenu/baseMenuContainer/baseMenuScreen/VBoxContainer/NinePatchRect/MarginContainer/buttonContainer"]
+layout_mode = 2
+
+[node name="helpButton" type="Button" parent="popupMenu/baseMenuContainer/baseMenuScreen/VBoxContainer/NinePatchRect/MarginContainer/buttonContainer/HBoxContainer"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/normal = ExtResource("2_uh2cu")
+theme_override_styles/pressed = ExtResource("3_uufuj")
+theme_override_styles/hover = ExtResource("3_uufuj")
+theme_override_styles/focus = ExtResource("3_uufuj")
+
+[node name="Label" type="Label" parent="popupMenu/baseMenuContainer/baseMenuScreen/VBoxContainer/NinePatchRect/MarginContainer/buttonContainer/HBoxContainer/helpButton"]
+modulate = Color(0, 0, 0, 1)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -23.5
+offset_top = -11.5
+offset_right = 23.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("4_lyjc4")
+theme_override_font_sizes/font_size = 12
+text = "Help"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="exitButton" type="Button" parent="popupMenu/baseMenuContainer/baseMenuScreen/VBoxContainer/NinePatchRect/MarginContainer/buttonContainer/HBoxContainer"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/normal = ExtResource("2_uh2cu")
+theme_override_styles/pressed = ExtResource("3_uufuj")
+theme_override_styles/hover = ExtResource("3_uufuj")
+theme_override_styles/focus = ExtResource("3_uufuj")
+
+[node name="Label" type="Label" parent="popupMenu/baseMenuContainer/baseMenuScreen/VBoxContainer/NinePatchRect/MarginContainer/buttonContainer/HBoxContainer/exitButton"]
+modulate = Color(0, 0, 0, 1)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -23.5
+offset_top = -11.5
+offset_right = 23.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("4_lyjc4")
+theme_override_font_sizes/font_size = 12
+text = "EXIT"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="popupMenu/baseMenuContainer/baseMenuScreen/VBoxContainer/NinePatchRect/MarginContainer/buttonContainer"]
+layout_mode = 2
+
+[node name="settingsButton" type="Button" parent="popupMenu/baseMenuContainer/baseMenuScreen/VBoxContainer/NinePatchRect/MarginContainer/buttonContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/normal = ExtResource("2_uh2cu")
+theme_override_styles/pressed = ExtResource("3_uufuj")
+theme_override_styles/hover = ExtResource("3_uufuj")
+theme_override_styles/focus = ExtResource("3_uufuj")
+
+[node name="Label" type="Label" parent="popupMenu/baseMenuContainer/baseMenuScreen/VBoxContainer/NinePatchRect/MarginContainer/buttonContainer/HBoxContainer2/settingsButton"]
+modulate = Color(0, 0, 0, 1)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -23.5
+offset_top = -11.5
+offset_right = 23.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("4_lyjc4")
+theme_override_font_sizes/font_size = 8
+text = "Settings"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="pauseButton" type="Button" parent="popupMenu/baseMenuContainer/baseMenuScreen/VBoxContainer/NinePatchRect/MarginContainer/buttonContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/normal = ExtResource("2_uh2cu")
+theme_override_styles/pressed = ExtResource("3_uufuj")
+theme_override_styles/hover = ExtResource("3_uufuj")
+theme_override_styles/focus = ExtResource("3_uufuj")
+
+[node name="Label" type="Label" parent="popupMenu/baseMenuContainer/baseMenuScreen/VBoxContainer/NinePatchRect/MarginContainer/buttonContainer/HBoxContainer2/pauseButton"]
+modulate = Color(0, 0, 0, 1)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -23.5
+offset_top = -11.5
+offset_right = 23.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("4_lyjc4")
+theme_override_font_sizes/font_size = 12
+text = "Pause"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="statDisplayContainer" type="VBoxContainer" parent="popupMenu/baseMenuContainer/baseMenuScreen/VBoxContainer/NinePatchRect/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+theme_override_constants/separation = 8
+
+[node name="coinDisplay" type="Label" parent="popupMenu/baseMenuContainer/baseMenuScreen/VBoxContainer/NinePatchRect/MarginContainer/statDisplayContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 0.72156864, 1)
+theme_override_colors/font_outline_color = Color(0.38837883, 0.39162984, 0.20539287, 1)
+theme_override_constants/outline_size = 9
+theme_override_fonts/font = ExtResource("4_lyjc4")
+theme_override_font_sizes/font_size = 30
+text = "COINS:"
+
+[node name="scoreDisplay" type="Label" parent="popupMenu/baseMenuContainer/baseMenuScreen/VBoxContainer/NinePatchRect/MarginContainer/statDisplayContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 0.72156864, 1)
+theme_override_colors/font_outline_color = Color(0.38837883, 0.39162984, 0.20539287, 1)
+theme_override_constants/outline_size = 9
+theme_override_fonts/font = ExtResource("4_lyjc4")
+theme_override_font_sizes/font_size = 30
+text = "SCORE:"
+
+[node name="HSeparator" type="HSeparator" parent="popupMenu/baseMenuContainer"]
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_js1g3")
+
+[node name="baseMenuOpenButtonContainer" type="VBoxContainer" parent="popupMenu"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme_override_constants/separation = 20
+
+[node name="toggleMenuButton" type="Button" parent="popupMenu/baseMenuOpenButtonContainer"]
+custom_minimum_size = Vector2(100, 4)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/normal = ExtResource("2_uh2cu")
+theme_override_styles/pressed = ExtResource("3_uufuj")
+theme_override_styles/hover = ExtResource("3_uufuj")
+theme_override_styles/focus = ExtResource("3_uufuj")
+
+[node name="HSeparator" type="HSeparator" parent="popupMenu/baseMenuOpenButtonContainer"]
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_js1g3")
+
+[node name="helpMenuContainer" type="MarginContainer" parent="popupMenu"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/margin_left = 0
+
+[node name="NinePatchRect" type="NinePatchRect" parent="popupMenu/helpMenuContainer"]
+self_modulate = Color(0.8509804, 0.7254902, 0.53333336, 1)
+custom_minimum_size = Vector2(300, 400)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("1_oha0l")
+patch_margin_left = 7
+patch_margin_top = 7
+patch_margin_right = 7
+patch_margin_bottom = 7
+
+[node name="title" type="HBoxContainer" parent="popupMenu/helpMenuContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_constants/separation = 16
+
+[node name="Control" type="Control" parent="popupMenu/helpMenuContainer/title"]
+layout_mode = 2
+
+[node name="helpDisplay" type="Label" parent="popupMenu/helpMenuContainer/title"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 0.72156864, 1)
+theme_override_colors/font_outline_color = Color(0.38837883, 0.39162984, 0.20539287, 1)
+theme_override_constants/outline_size = 9
+theme_override_fonts/font = ExtResource("4_lyjc4")
+theme_override_font_sizes/font_size = 30
+text = "HOW TO PLAY"
+
+[node name="MarginContainer" type="MarginContainer" parent="popupMenu/helpMenuContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 75
+theme_override_constants/margin_right = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="popupMenu/helpMenuContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="popupMenu/helpMenuContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = -120
+
+[node name="VBoxContainer" type="VBoxContainer" parent="popupMenu/helpMenuContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(280, 0)
+layout_mode = 2
+theme_override_constants/separation = -10
+
+[node name="text1Display" type="Label" parent="popupMenu/helpMenuContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 0.72156864, 1)
+theme_override_colors/font_outline_color = Color(0.38837883, 0.39162984, 0.20539287, 1)
+theme_override_constants/outline_size = 9
+theme_override_fonts/font = ExtResource("4_lyjc4")
+theme_override_font_sizes/font_size = 10
+text = "Lorem ipsum
+ dolor sit amet, 
+consectetur
+ adipiscing elit, 
+sed do eiusmod 
+tempor
+ incididunt ut
+ labore 
+et dolore magna 
+aliqua. 
+Ut enim ad minim 
+veniam,
+"
+
+[node name="text1Display2" type="Label" parent="popupMenu/helpMenuContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 0.72156864, 1)
+theme_override_colors/font_outline_color = Color(0.38837883, 0.39162984, 0.20539287, 1)
+theme_override_constants/outline_size = 9
+theme_override_fonts/font = ExtResource("4_lyjc4")
+theme_override_font_sizes/font_size = 11
+text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+"
+autowrap_mode = 3
+
+[node name="TextureRect" type="TextureRect" parent="popupMenu/helpMenuContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+texture = ExtResource("6_uh2cu")
+expand_mode = 1
+stretch_mode = 4
+
+[connection signal="pressed" from="popupMenu/baseMenuContainer/baseMenuScreen/VBoxContainer/toggleMenuButton" to="popupMenu" method="_on_toggle_menu_button_pressed"]
+[connection signal="pressed" from="popupMenu/baseMenuOpenButtonContainer/toggleMenuButton" to="popupMenu" method="_on_toggle_menu_button_pressed"]
