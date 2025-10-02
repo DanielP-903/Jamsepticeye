@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=3 uid="uid://donvpcy7gr85v"]
+
+[ext_resource type="Texture2D" uid="uid://d28dchqikcvle" path="res://Art/Tilesheets/colored-transparent.png" id="1_jf14c"]
+[ext_resource type="Script" uid="uid://buxk6f4b6im2v" path="res://Scripts/Enemy.gd" id="2_3lu6a"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jf14c"]
+size = Vector2(10, 10)
+
+[node name="Enemy" type="Node2D"]
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+shape = SubResource("RectangleShape2D_jf14c")
+
+[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
+texture = ExtResource("1_jf14c")
+region_enabled = true
+region_rect = Rect2(459, 68, 16, 16)
+
+[node name="PossessionHighlight" type="Sprite2D" parent="."]
+visible = false
+modulate = Color(0.60288316, 0.9700027, 0.2408626, 1)
+scale = Vector2(1.21, 1.21)
+texture = ExtResource("1_jf14c")
+region_enabled = true
+region_rect = Rect2(646, 204, 16, 16)
+region_filter_clip_enabled = true
+script = ExtResource("2_3lu6a")

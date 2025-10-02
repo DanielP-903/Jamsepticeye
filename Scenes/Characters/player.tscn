@@ -1,15 +1,16 @@
 [gd_scene load_steps=4 format=3 uid="uid://cfqamaspdqwxd"]
 
-[ext_resource type="Script" uid="uid://cmnlxyglwq43i" path="res://Scripts/PlayerController.gd" id="1_cko2x"]
+[ext_resource type="Script" uid="uid://cmnlxyglwq43i" path="res://Scripts/Player.gd" id="1_cko2x"]
 [ext_resource type="Texture2D" uid="uid://d28dchqikcvle" path="res://Art/Tilesheets/colored-transparent.png" id="2_cko2x"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_5rgs0"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_40svl"]
+size = Vector2(10, 10)
 
 [node name="Player" type="Node2D"]
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="."]
 script = ExtResource("1_cko2x")
-speed = 100
+speed = 0
 
 [node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
 texture = ExtResource("2_cko2x")
@@ -17,11 +18,13 @@ region_enabled = true
 region_rect = Rect2(408, 17, 16, 16)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
-shape = SubResource("RectangleShape2D_5rgs0")
+shape = SubResource("RectangleShape2D_40svl")
 
 [node name="Node" type="Node" parent="."]
 
 [node name="Crosshair" type="Sprite2D" parent="Node"]
+modulate = Color(1, 0, 0, 1)
+scale = Vector2(0.4, 0.4)
 texture = ExtResource("2_cko2x")
 region_enabled = true
 region_rect = Rect2(272, 68, 16, 16)
