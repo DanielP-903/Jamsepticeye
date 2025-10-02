@@ -14,6 +14,11 @@ config/name="Jamsepticeye"
 run/main_scene="uid://dc0rynfv23uuw"
 config/features=PackedStringArray("4.5", "GL Compatibility")
 
+[display]
+
+window/stretch/mode="viewport"
+window/stretch/aspect="expand"
+
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/diagnosticlist/plugin.cfg", "res://addons/script-ide/plugin.cfg")
