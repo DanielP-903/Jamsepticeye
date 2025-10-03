@@ -6,9 +6,9 @@ var is_highlighted: bool = false;
 func ai_get_direction():
 	return target.position - self.position
 	
-func ai_move():
-	var direction = ai_get_direction()
-	var motion =  direction.normalized() * speed
+#func ai_move():
+	#var direction = ai_get_direction()
+	#var motion =  direction.normalized() * speed
 	#move_and_slide(motion)
 	
 #func _physics_process(delta):
