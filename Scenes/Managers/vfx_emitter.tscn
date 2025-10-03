@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://c47srxsmj3f5a"]
+
+[ext_resource type="Script" uid="uid://dc4ubn4ubb3q0" path="res://Scripts/Managers/vfx_emitter.gd" id="1_pc5ky"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_pc5ky"]
+particle_flag_disable_z = true
+gravity = Vector3(0, 98, 0)
+
+[node name="VFXEmitter" type="GPUParticles2D"]
+emitting = false
+lifetime = 0.5
+one_shot = true
+process_material = SubResource("ParticleProcessMaterial_pc5ky")
+script = ExtResource("1_pc5ky")

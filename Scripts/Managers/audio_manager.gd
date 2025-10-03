@@ -3,7 +3,7 @@ class_name AudioManager extends Node
 @export var audio_map: Dictionary[Global.EAudioType, AudioStream]
 @export var music_map: Dictionary[Global.EMusicType, AudioStream]
 
-var audio_source_scene = preload("res://Scenes/audio_source.tscn")
+var audio_source_scene = preload("res://Scenes/Managers/audio_source.tscn")
 var audio_pool: Array[AudioSource] = []
 
 var music: AudioStreamPlayer2D
@@ -47,7 +47,7 @@ func _get_free_audio_from_pool() -> AudioSource:
 			audio_pool[n].activate()
 			return audio_pool[n]
 	
-	# No free projectiles, make one
+	# No free audio sources, make one
 	var instance = _create_audio_source()
 	instance.activate()
 	return instance

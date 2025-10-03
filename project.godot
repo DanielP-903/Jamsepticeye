@@ -40,7 +40,8 @@ folder_colors={
 "res://Prefabs/": "blue",
 "res://Scenes/": "blue",
 "res://Scripts/": "gray",
-"res://Styles/": "pink"
+"res://Styles/": "pink",
+"res://VFX/": "purple"
 }
 
 [input]

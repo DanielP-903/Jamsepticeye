@@ -1,0 +1,8 @@
+[gd_resource type="ParticleProcessMaterial" format=3 uid="uid://swrn15cgxw2x"]
+
+[resource]
+particle_flag_align_y = true
+direction = Vector3(0, -1, 0)
+initial_velocity_min = 120.0
+initial_velocity_max = 120.0
+gravity = Vector3(0, 4.9, 0)

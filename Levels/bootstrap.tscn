@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://cxrj86kxbmqyf"]
+[gd_scene load_steps=9 format=3 uid="uid://cxrj86kxbmqyf"]
 
 [ext_resource type="Script" uid="uid://ba6rqq4tnkajp" path="res://Scripts/game_state_controller.gd" id="1_bsoci"]
 [ext_resource type="Script" uid="uid://dp1m2cc5xqym6" path="res://input_helper.gd" id="2_kutoj"]
@@ -6,6 +6,8 @@
 [ext_resource type="AudioStream" uid="uid://byf8x374ukxhw" path="res://Audio/UI Sounds/switch-a.ogg" id="4_vx0ma"]
 [ext_resource type="AudioStream" uid="uid://cirt6rux5foiw" path="res://Audio/UI Sounds/click-b.ogg" id="5_r6h11"]
 [ext_resource type="AudioStream" uid="uid://bpsvov2m08ahr" path="res://Audio/Music/test_music.wav" id="6_r6h11"]
+[ext_resource type="PackedScene" uid="uid://d3qumjacxcqr2" path="res://Scenes/Managers/vfx_manager.tscn" id="7_i70vg"]
+[ext_resource type="Material" uid="uid://swrn15cgxw2x" path="res://VFX/sparkles.tres" id="8_8of2d"]
 
 [node name="GameStateController" type="Node" node_paths=PackedStringArray("world", "gui")]
 script = ExtResource("1_bsoci")
@@ -35,4 +37,9 @@ audio_map = Dictionary[int, AudioStream]({
 })
 music_map = Dictionary[int, AudioStream]({
 1: ExtResource("6_r6h11")
+})
+
+[node name="VFXManager" parent="Managers" instance=ExtResource("7_i70vg")]
+vfx_map = Dictionary[int, ParticleProcessMaterial]({
+1: ExtResource("8_8of2d")
 })
