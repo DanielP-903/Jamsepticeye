@@ -95,10 +95,6 @@ theme_override_styles/focus = ExtResource("3_uufuj")
 text = "Exit"
 alignment = 0
 
-[connection signal="mouse_entered" from="mainMenuScreen/MarginContainer/VBoxContainer/playButton" to="mainMenuScreen" method="_on_play_button_mouse_entered"]
 [connection signal="pressed" from="mainMenuScreen/MarginContainer/VBoxContainer/playButton" to="mainMenuScreen" method="_on_play_button_pressed"]
-[connection signal="mouse_entered" from="mainMenuScreen/MarginContainer/VBoxContainer/optionsButton" to="mainMenuScreen" method="_on_options_button_mouse_entered"]
 [connection signal="pressed" from="mainMenuScreen/MarginContainer/VBoxContainer/optionsButton" to="mainMenuScreen" method="_on_options_button_pressed"]
-[connection signal="focus_entered" from="mainMenuScreen/MarginContainer/VBoxContainer/exitButton" to="mainMenuScreen" method="_on_exit_button_focus_entered"]
-[connection signal="mouse_entered" from="mainMenuScreen/MarginContainer/VBoxContainer/exitButton" to="mainMenuScreen" method="_on_exit_button_mouse_entered"]
 [connection signal="pressed" from="mainMenuScreen/MarginContainer/VBoxContainer/exitButton" to="mainMenuScreen" method="_on_exit_button_pressed"]

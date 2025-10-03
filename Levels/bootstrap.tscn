@@ -1,6 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://cxrj86kxbmqyf"]
+[gd_scene load_steps=7 format=3 uid="uid://cxrj86kxbmqyf"]
 
 [ext_resource type="Script" uid="uid://ba6rqq4tnkajp" path="res://Scripts/game_state_controller.gd" id="1_bsoci"]
+[ext_resource type="Script" uid="uid://dp1m2cc5xqym6" path="res://input_helper.gd" id="2_kutoj"]
+[ext_resource type="PackedScene" uid="uid://cry85lo8nj33d" path="res://Scenes/Managers/audio_manager.tscn" id="3_vx0ma"]
+[ext_resource type="AudioStream" uid="uid://byf8x374ukxhw" path="res://Audio/UI Sounds/switch-a.ogg" id="4_vx0ma"]
+[ext_resource type="AudioStream" uid="uid://cirt6rux5foiw" path="res://Audio/UI Sounds/click-b.ogg" id="5_r6h11"]
+[ext_resource type="AudioStream" uid="uid://bpsvov2m08ahr" path="res://Audio/Music/test_music.wav" id="6_r6h11"]
 
 [node name="GameStateController" type="Node" node_paths=PackedStringArray("world", "gui")]
 script = ExtResource("1_bsoci")
@@ -16,3 +21,18 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="InputHelper" type="Node" parent="."]
+script = ExtResource("2_kutoj")
+metadata/_custom_type_script = "uid://dp1m2cc5xqym6"
+
+[node name="Managers" type="Node" parent="."]
+
+[node name="AudioManager" parent="Managers" instance=ExtResource("3_vx0ma")]
+audio_map = Dictionary[int, AudioStream]({
+1: ExtResource("4_vx0ma"),
+2: ExtResource("5_r6h11")
+})
+music_map = Dictionary[int, AudioStream]({
+1: ExtResource("6_r6h11")
+})
