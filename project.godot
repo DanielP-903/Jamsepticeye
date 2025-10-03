@@ -11,8 +11,16 @@ config_version=5
 [application]
 
 config/name="Jamsepticeye"
-run/main_scene="uid://dxukahearb6fw"
+run/main_scene="uid://cxrj86kxbmqyf"
 config/features=PackedStringArray("4.5", "GL Compatibility")
+
+[autoload]
+
+Global="*res://Scripts/Global.gd"
+
+[debug]
+
+gdscript/warnings/unused_parameter=0
 
 [display]
 

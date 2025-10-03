@@ -1,0 +1,708 @@
+[gd_scene load_steps=15 format=3 uid="uid://dxukahearb6fw"]
+
+[ext_resource type="Script" uid="uid://boo1jtjeagqsh" path="res://Scripts/popup_menu_manager.gd" id="1_awf8x"]
+[ext_resource type="StyleBox" uid="uid://tepnb6eelafq" path="res://Styles/button_normal.tres" id="2_4gs6b"]
+[ext_resource type="StyleBox" uid="uid://cmiyla1mseoge" path="res://Styles/button_pressed.tres" id="3_dwxww"]
+[ext_resource type="Texture2D" uid="uid://xstrim5farja" path="res://Art/UI/Vector/Extra/input_square.svg" id="4_tuhlk"]
+[ext_resource type="FontFile" uid="uid://boplb6ddx0gad" path="res://Art/Font/Kenney Future.ttf" id="5_5rxyq"]
+[ext_resource type="Texture2D" uid="uid://bqc3ue3fsqaab" path="res://Art/UI/PNG/Yellow/Double/star.png" id="6_uhs2g"]
+[ext_resource type="Texture2D" uid="uid://bipxgd3s3kla" path="res://Art/UI/Vector/Grey/icon_cross.svg" id="7_0ij52"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_js1g3"]
+
+[sub_resource type="Animation" id="Animation_ef2fd"]
+length = 0.001
+
+[sub_resource type="Animation" id="Animation_2m62f"]
+resource_name = "close_helpMenu"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("menu:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("menu:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("helpMenu:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("helpMenu:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_yt2i1"]
+resource_name = "close_menu"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("menu:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("menu/baseMenuScreen/VBoxContainer/NinePatchRect:custom_minimum_size")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.133, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(350, 160), Vector2(0, 160), Vector2(0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("menu/baseMenuScreen/VBoxContainer/NinePatchRect/MarginContainer:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.06666668),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("menu/baseMenuScreen/VBoxContainer/NinePatchRect/MarginContainer:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.06666668),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("menu/baseMenuScreen/VBoxContainer/toggleMenuButton:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.06666668),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("menu/baseMenuScreen/VBoxContainer/toggleMenuButton:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.06666666),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("baseMenuOpenButtonContainer:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.06666666),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("baseMenuOpenButtonContainer:modulate")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_u3hbe"]
+resource_name = "open_helpMenu"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("menu:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("menu:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("helpMenu:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("helpMenu:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_uufuj"]
+resource_name = "open_menu"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("menu:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("menu/baseMenuScreen/VBoxContainer/NinePatchRect:custom_minimum_size")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.133, 0.36666667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 160), Vector2(350, 160)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("menu/baseMenuScreen/VBoxContainer/NinePatchRect/MarginContainer:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.23333333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("menu/baseMenuScreen/VBoxContainer/NinePatchRect/MarginContainer:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.3, 0.36666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("menu/baseMenuScreen/VBoxContainer/toggleMenuButton:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("menu/baseMenuScreen/VBoxContainer/toggleMenuButton:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("baseMenuOpenButtonContainer:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("baseMenuOpenButtonContainer:modulate")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_u3hbe"]
+_data = {
+&"RESET": SubResource("Animation_ef2fd"),
+&"close_helpMenu": SubResource("Animation_2m62f"),
+&"close_menu": SubResource("Animation_yt2i1"),
+&"open_helpMenu": SubResource("Animation_u3hbe"),
+&"open_menu": SubResource("Animation_uufuj")
+}
+
+[node name="InGameUI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="popupMenu" type="MarginContainer" parent="." node_paths=PackedStringArray("menu_screen", "open_menu_screen", "help_menu", "open_menu_button", "close_menu_button", "open_help_menu_button", "close_help_menu_button")]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_awf8x")
+menu_screen = NodePath("menu")
+open_menu_screen = NodePath("baseMenuOpenButtonContainer")
+help_menu = NodePath("helpMenu")
+open_menu_button = NodePath("baseMenuOpenButtonContainer/toggleMenuButton")
+close_menu_button = NodePath("menu/baseMenuScreen/VBoxContainer/toggleMenuButton")
+open_help_menu_button = NodePath("menu/baseMenuScreen/VBoxContainer/NinePatchRect/MarginContainer/buttonContainer/HBoxContainer/toggleHelpMenuButton")
+close_help_menu_button = NodePath("helpMenu/exitButtonContainer/MarginContainer/toggleHelpMenuButton")
+
+[node name="menu" type="VBoxContainer" parent="popupMenu"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme_override_constants/separation = 40
+
+[node name="baseMenuScreen" type="MarginContainer" parent="popupMenu/menu"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="popupMenu/menu/baseMenuScreen"]
+layout_mode = 2
+theme_override_constants/separation = 3
+
+[node name="toggleMenuButton" type="Button" parent="popupMenu/menu/baseMenuScreen/VBoxContainer"]
+custom_minimum_size = Vector2(100, 4)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/normal = ExtResource("2_4gs6b")
+theme_override_styles/pressed = ExtResource("3_dwxww")
+theme_override_styles/hover = ExtResource("3_dwxww")
+theme_override_styles/focus = ExtResource("3_dwxww")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="popupMenu/menu/baseMenuScreen/VBoxContainer"]
+self_modulate = Color(0.8509804, 0.7254902, 0.53333336, 1)
+layout_mode = 2
+texture = ExtResource("4_tuhlk")
+patch_margin_left = 7
+patch_margin_top = 7
+patch_margin_right = 7
+patch_margin_bottom = 7
+
+[node name="MarginContainer" type="MarginContainer" parent="popupMenu/menu/baseMenuScreen/VBoxContainer/NinePatchRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 15
+
+[node name="buttonContainer" type="VBoxContainer" parent="popupMenu/menu/baseMenuScreen/VBoxContainer/NinePatchRect/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+
+[node name="HBoxContainer" type="HBoxContainer" parent="popupMenu/menu/baseMenuScreen/VBoxContainer/NinePatchRect/MarginContainer/buttonContainer"]
+layout_mode = 2
+
+[node name="toggleHelpMenuButton" type="Button" parent="popupMenu/menu/baseMenuScreen/VBoxContainer/NinePatchRect/MarginContainer/buttonContainer/HBoxContainer"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/normal = ExtResource("2_4gs6b")
+theme_override_styles/pressed = ExtResource("3_dwxww")
+theme_override_styles/hover = ExtResource("3_dwxww")
+theme_override_styles/focus = ExtResource("3_dwxww")
+
+[node name="Label" type="Label" parent="popupMenu/menu/baseMenuScreen/VBoxContainer/NinePatchRect/MarginContainer/buttonContainer/HBoxContainer/toggleHelpMenuButton"]
+modulate = Color(0, 0, 0, 1)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -23.5
+offset_top = -11.5
+offset_right = 23.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("5_5rxyq")
+theme_override_font_sizes/font_size = 12
+text = "Help"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="exitButton" type="Button" parent="popupMenu/menu/baseMenuScreen/VBoxContainer/NinePatchRect/MarginContainer/buttonContainer/HBoxContainer"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/normal = ExtResource("2_4gs6b")
+theme_override_styles/pressed = ExtResource("3_dwxww")
+theme_override_styles/hover = ExtResource("3_dwxww")
+theme_override_styles/focus = ExtResource("3_dwxww")
+
+[node name="Label" type="Label" parent="popupMenu/menu/baseMenuScreen/VBoxContainer/NinePatchRect/MarginContainer/buttonContainer/HBoxContainer/exitButton"]
+modulate = Color(0, 0, 0, 1)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -23.5
+offset_top = -11.5
+offset_right = 23.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("5_5rxyq")
+theme_override_font_sizes/font_size = 12
+text = "EXIT"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="popupMenu/menu/baseMenuScreen/VBoxContainer/NinePatchRect/MarginContainer/buttonContainer"]
+layout_mode = 2
+
+[node name="settingsButton" type="Button" parent="popupMenu/menu/baseMenuScreen/VBoxContainer/NinePatchRect/MarginContainer/buttonContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/normal = ExtResource("2_4gs6b")
+theme_override_styles/pressed = ExtResource("3_dwxww")
+theme_override_styles/hover = ExtResource("3_dwxww")
+theme_override_styles/focus = ExtResource("3_dwxww")
+
+[node name="Label" type="Label" parent="popupMenu/menu/baseMenuScreen/VBoxContainer/NinePatchRect/MarginContainer/buttonContainer/HBoxContainer2/settingsButton"]
+modulate = Color(0, 0, 0, 1)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -23.5
+offset_top = -11.5
+offset_right = 23.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("5_5rxyq")
+theme_override_font_sizes/font_size = 8
+text = "Settings"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="pauseButton" type="Button" parent="popupMenu/menu/baseMenuScreen/VBoxContainer/NinePatchRect/MarginContainer/buttonContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/normal = ExtResource("2_4gs6b")
+theme_override_styles/pressed = ExtResource("3_dwxww")
+theme_override_styles/hover = ExtResource("3_dwxww")
+theme_override_styles/focus = ExtResource("3_dwxww")
+
+[node name="Label" type="Label" parent="popupMenu/menu/baseMenuScreen/VBoxContainer/NinePatchRect/MarginContainer/buttonContainer/HBoxContainer2/pauseButton"]
+modulate = Color(0, 0, 0, 1)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -23.5
+offset_top = -11.5
+offset_right = 23.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("5_5rxyq")
+theme_override_font_sizes/font_size = 12
+text = "Pause"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="statDisplayContainer" type="VBoxContainer" parent="popupMenu/menu/baseMenuScreen/VBoxContainer/NinePatchRect/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+theme_override_constants/separation = 8
+
+[node name="coinDisplay" type="Label" parent="popupMenu/menu/baseMenuScreen/VBoxContainer/NinePatchRect/MarginContainer/statDisplayContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 0.72156864, 1)
+theme_override_colors/font_outline_color = Color(0.38837883, 0.39162984, 0.20539287, 1)
+theme_override_constants/outline_size = 9
+theme_override_fonts/font = ExtResource("5_5rxyq")
+theme_override_font_sizes/font_size = 30
+text = "COINS:"
+
+[node name="scoreDisplay" type="Label" parent="popupMenu/menu/baseMenuScreen/VBoxContainer/NinePatchRect/MarginContainer/statDisplayContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 0.72156864, 1)
+theme_override_colors/font_outline_color = Color(0.38837883, 0.39162984, 0.20539287, 1)
+theme_override_constants/outline_size = 9
+theme_override_fonts/font = ExtResource("5_5rxyq")
+theme_override_font_sizes/font_size = 30
+text = "SCORE:"
+
+[node name="HSeparator" type="HSeparator" parent="popupMenu/menu"]
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_js1g3")
+
+[node name="baseMenuOpenButtonContainer" type="VBoxContainer" parent="popupMenu"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme_override_constants/separation = 20
+
+[node name="toggleMenuButton" type="Button" parent="popupMenu/baseMenuOpenButtonContainer"]
+custom_minimum_size = Vector2(100, 4)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/normal = ExtResource("2_4gs6b")
+theme_override_styles/pressed = ExtResource("3_dwxww")
+theme_override_styles/hover = ExtResource("3_dwxww")
+theme_override_styles/focus = ExtResource("3_dwxww")
+
+[node name="HSeparator" type="HSeparator" parent="popupMenu/baseMenuOpenButtonContainer"]
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_js1g3")
+
+[node name="helpMenu" type="MarginContainer" parent="popupMenu"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/margin_left = 0
+
+[node name="NinePatchRect" type="NinePatchRect" parent="popupMenu/helpMenu"]
+self_modulate = Color(0.8509804, 0.7254902, 0.53333336, 1)
+custom_minimum_size = Vector2(300, 400)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("4_tuhlk")
+patch_margin_left = 7
+patch_margin_top = 7
+patch_margin_right = 7
+patch_margin_bottom = 7
+
+[node name="title" type="HBoxContainer" parent="popupMenu/helpMenu"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_constants/separation = 16
+
+[node name="Control" type="Control" parent="popupMenu/helpMenu/title"]
+layout_mode = 2
+
+[node name="helpDisplay" type="Label" parent="popupMenu/helpMenu/title"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 0.72156864, 1)
+theme_override_colors/font_outline_color = Color(0.38837883, 0.39162984, 0.20539287, 1)
+theme_override_constants/outline_size = 9
+theme_override_fonts/font = ExtResource("5_5rxyq")
+theme_override_font_sizes/font_size = 30
+text = "HOW TO PLAY"
+
+[node name="MarginContainer" type="MarginContainer" parent="popupMenu/helpMenu"]
+layout_mode = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 75
+theme_override_constants/margin_right = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="popupMenu/helpMenu/MarginContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="popupMenu/helpMenu/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = -120
+
+[node name="VBoxContainer" type="VBoxContainer" parent="popupMenu/helpMenu/MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(280, 0)
+layout_mode = 2
+theme_override_constants/separation = -10
+
+[node name="text1Display" type="Label" parent="popupMenu/helpMenu/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 0.72156864, 1)
+theme_override_colors/font_outline_color = Color(0.38837883, 0.39162984, 0.20539287, 1)
+theme_override_constants/outline_size = 9
+theme_override_fonts/font = ExtResource("5_5rxyq")
+theme_override_font_sizes/font_size = 10
+text = "Lorem ipsum
+ dolor sit amet, 
+consectetur
+ adipiscing elit, 
+sed do eiusmod 
+tempor
+ incididunt ut
+ labore 
+et dolore magna 
+aliqua. 
+Ut enim ad minim 
+veniam,
+"
+
+[node name="text1Display2" type="Label" parent="popupMenu/helpMenu/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(280, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 0.72156864, 1)
+theme_override_colors/font_outline_color = Color(0.38837883, 0.39162984, 0.20539287, 1)
+theme_override_constants/outline_size = 9
+theme_override_fonts/font = ExtResource("5_5rxyq")
+theme_override_font_sizes/font_size = 11
+text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+"
+autowrap_mode = 3
+
+[node name="TextureRect" type="TextureRect" parent="popupMenu/helpMenu/MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+texture = ExtResource("6_uhs2g")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="exitButtonContainer" type="VBoxContainer" parent="popupMenu/helpMenu"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="popupMenu/helpMenu/exitButtonContainer"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/margin_top = -10
+theme_override_constants/margin_right = -10
+
+[node name="toggleHelpMenuButton" type="Button" parent="popupMenu/helpMenu/exitButtonContainer/MarginContainer"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/h_separation = 0
+theme_override_styles/normal = ExtResource("2_4gs6b")
+theme_override_styles/pressed = ExtResource("3_dwxww")
+theme_override_styles/hover = ExtResource("3_dwxww")
+theme_override_styles/focus = ExtResource("3_dwxww")
+icon = ExtResource("7_0ij52")
+icon_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="popupMenu"]
+libraries = {
+&"": SubResource("AnimationLibrary_u3hbe")
+}
+
+[connection signal="pressed" from="popupMenu/menu/baseMenuScreen/VBoxContainer/toggleMenuButton" to="popupMenu" method="_on_toggle_menu_button_pressed"]
+[connection signal="pressed" from="popupMenu/menu/baseMenuScreen/VBoxContainer/NinePatchRect/MarginContainer/buttonContainer/HBoxContainer/toggleHelpMenuButton" to="popupMenu" method="_on_toggle_help_menu_button_pressed"]
+[connection signal="pressed" from="popupMenu/baseMenuOpenButtonContainer/toggleMenuButton" to="popupMenu" method="_on_toggle_menu_button_pressed"]
+[connection signal="pressed" from="popupMenu/helpMenu/exitButtonContainer/MarginContainer/toggleHelpMenuButton" to="popupMenu" method="_on_toggle_help_menu_button_pressed"]

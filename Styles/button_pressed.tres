@@ -3,9 +3,10 @@
 [ext_resource type="Texture2D" uid="uid://c5decs8ntm043" path="res://Art/UI/PNG/Extra/Default/button_square_line.png" id="1_j38c6"]
 
 [resource]
+content_margin_left = 20.0
 texture = ExtResource("1_j38c6")
-texture_margin_left = 2.0
-texture_margin_top = 2.0
-texture_margin_right = 2.0
-texture_margin_bottom = 2.0
+texture_margin_left = 7.0
+texture_margin_top = 7.0
+texture_margin_right = 7.0
+texture_margin_bottom = 7.0
 modulate_color = Color(0.6986108, 0.6986108, 0.4983494, 1)

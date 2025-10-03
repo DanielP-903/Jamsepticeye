@@ -1,3 +1,11 @@
-[gd_scene format=3 uid="uid://bn828tuc2a4h8"]
+[gd_scene load_steps=2 format=3 uid="uid://bn828tuc2a4h8"]
+
+[ext_resource type="Texture2D" uid="uid://n3toud2uer36" path="res://Art/UI/PNG/Red/Double/star_outline.png" id="1_oj8hd"]
 
 [node name="Main" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_oj8hd")
+
+[node name="Camera2D" type="Camera2D" parent="Sprite2D"]
+zoom = Vector2(4, 4)
