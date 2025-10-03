@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://l5pnrkolh8qt"]
 
-[ext_resource type="Script" uid="uid://rm240a3ngc6x" path="res://Levels/dan_test.gd" id="1_n7rcm"]
+[ext_resource type="Script" uid="uid://rm240a3ngc6x" path="res://Scripts/dan_test.gd" id="1_n7rcm"]
 [ext_resource type="PackedScene" uid="uid://cfqamaspdqwxd" path="res://Scenes/Characters/player.tscn" id="2_n7rcm"]
 
 [node name="DanTest" type="Node2D"]
