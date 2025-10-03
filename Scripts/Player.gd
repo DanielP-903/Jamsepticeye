@@ -1,7 +1,7 @@
 extends CharacterCommon
 
 @onready var player_sprite = $Sprite2D
-@onready var crosshair = $Crosshair
+@onready var crosshair = $"../Node/Crosshair"
 
 func _init() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CONFINED_HIDDEN)
