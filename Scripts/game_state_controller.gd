@@ -12,12 +12,16 @@ var current_gui_scene
 var current_level_type: Global.ELevelType
 
 var paused: bool
+var is_game_over: bool
 
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	
 	Global.game_state_controller = self
-		
+	
+	is_game_over = false
+	paused = false
+	
 	# Load our initial scene as defined
 	change_level(Global.ELevelType.MainMenu)
 
@@ -25,7 +29,11 @@ func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("pause"):
 		request_toggle_pause()
 
-func request_toggle_pause():
+func request_toggle_pause() -> void:
+	if is_game_over:
+		# Can't pause during game over
+		return
+	
 	if current_level_type != Global.ELevelType.MainLevel:
 		# We only pause in the main level, nowhere else
 		return
@@ -43,6 +51,22 @@ func request_toggle_pause():
 	# Show/hide the UI
 	if current_gui_scene is HUD:
 			current_gui_scene.toggle_pause_menu()
+
+func game_over() -> void:
+	paused = true
+	
+	# Pause the level
+	level.get_tree().paused = paused
+	
+	# Change mouse capturing
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	
+	Global.audio_manager.toggle_pause_music_filter()
+	
+	is_game_over = true
+	
+	if current_gui_scene is HUD:
+		current_gui_scene.show_game_over_screen()
 
 ## UI Helpers START
 func button_hover(button: Button, tween_type: Global.EButtonTweenType, tween_amount, duration) -> void:
