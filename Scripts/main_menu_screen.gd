@@ -1,5 +1,7 @@
 extends MarginContainer
 
+@export var title: MarginContainer
+
 @export var main_menu: MarginContainer
 @export var options_menu: MarginContainer
 
@@ -9,6 +11,8 @@ extends MarginContainer
 
 var menu_buttons: Array
 
+var title_pulse = 0.0
+var title_pos: Vector2
 
 func _ready() -> void:
 	menu_buttons = [play_button, options_button, exit_button]
@@ -16,6 +20,13 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	_update_focus()
 	_update_buttons()
+	
+	title_pulse += delta
+	
+	if title_pulse > PI:
+		title_pulse = 0.0
+		
+	title.position = Vector2(title.position.x, sin(title_pulse) * -5.0)
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_cancel"):

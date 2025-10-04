@@ -1,8 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://bfly7dlnvh5b3"]
+[gd_scene load_steps=10 format=3 uid="uid://bfly7dlnvh5b3"]
 
 [ext_resource type="Script" uid="uid://b77krr6mejgu0" path="res://Scripts/main_menu_screen.gd" id="1_lyjc4"]
-[ext_resource type="Texture2D" uid="uid://csp8gbfce2afr" path="res://Art/UI/amazing_bg.png" id="2_lyjc4"]
+[ext_resource type="Texture2D" uid="uid://rmst7ptyto0x" path="res://Art/UI/Final/background.png" id="2_1e43x"]
 [ext_resource type="StyleBox" uid="uid://tepnb6eelafq" path="res://Styles/button_normal.tres" id="2_uh2cu"]
+[ext_resource type="Theme" uid="uid://bb8hd8dei28q7" path="res://Styles/text_button_theme.tres" id="3_1e43x"]
+[ext_resource type="FontFile" uid="uid://ck0sr7hgthlu4" path="res://Art/Font/ari-w9500-condensed-display.ttf" id="3_qogjb"]
 [ext_resource type="StyleBox" uid="uid://cmiyla1mseoge" path="res://Styles/button_pressed.tres" id="3_uufuj"]
 [ext_resource type="Texture2D" uid="uid://xstrim5farja" path="res://Art/UI/Vector/Extra/input_square.svg" id="5_uufuj"]
 [ext_resource type="StyleBox" uid="uid://d2qpn6ltwbu0d" path="res://Styles/options_button_normal.tres" id="6_ef2fd"]
@@ -10,13 +12,14 @@
 
 [node name="mainMenu" type="CanvasLayer"]
 
-[node name="mainCanvas" type="MarginContainer" parent="." node_paths=PackedStringArray("main_menu", "options_menu", "play_button", "options_button", "exit_button")]
+[node name="mainCanvas" type="MarginContainer" parent="." node_paths=PackedStringArray("title", "main_menu", "options_menu", "play_button", "options_button", "exit_button")]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_lyjc4")
+title = NodePath("titleContainer")
 main_menu = NodePath("mainMenuContainer")
 options_menu = NodePath("optionsContainer")
 play_button = NodePath("mainMenuContainer/VBoxContainer/playButton")
@@ -25,32 +28,50 @@ exit_button = NodePath("mainMenuContainer/VBoxContainer/exitButton")
 
 [node name="TextureRect" type="TextureRect" parent="mainCanvas"]
 layout_mode = 2
-texture = ExtResource("2_lyjc4")
+texture = ExtResource("2_1e43x")
+
+[node name="titleContainer" type="MarginContainer" parent="mainCanvas"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_constants/margin_top = 50
+
+[node name="Label" type="Label" parent="mainCanvas/titleContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 10
+theme_override_fonts/font = ExtResource("3_qogjb")
+theme_override_font_sizes/font_size = 96
+text = "POSESSION GAME"
 
 [node name="mainMenuContainer" type="MarginContainer" parent="mainCanvas"]
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 4
 theme_override_constants/margin_left = 50
-theme_override_constants/margin_top = 100
+theme_override_constants/margin_top = 300
 
 [node name="VBoxContainer" type="VBoxContainer" parent="mainCanvas/mainMenuContainer"]
-custom_minimum_size = Vector2(300, 300)
+custom_minimum_size = Vector2(400, 300)
 layout_mode = 2
 size_flags_horizontal = 0
-size_flags_vertical = 4
+size_flags_vertical = 8
 theme_override_constants/separation = 12
 
 [node name="playButton" type="Button" parent="mainCanvas/mainMenuContainer/VBoxContainer"]
-custom_minimum_size = Vector2(0, 75)
+custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
 focus_neighbor_top = NodePath("../exitButton")
+theme = ExtResource("3_1e43x")
 theme_override_colors/font_color = Color(0.048783384, 0.04644969, 0, 1)
 theme_override_colors/font_focus_color = Color(0.31431612, 0.31431612, 0.3143161, 1)
 theme_override_colors/font_pressed_color = Color(0.19793725, 0.19793722, 0.19793722, 1)
 theme_override_colors/font_hover_color = Color(0.31431612, 0.31431612, 0.3143161, 1)
 theme_override_colors/font_hover_pressed_color = Color(0.19793725, 0.19793722, 0.19793722, 1)
-theme_override_font_sizes/font_size = 28
+theme_override_font_sizes/font_size = 48
 theme_override_styles/normal = ExtResource("2_uh2cu")
 theme_override_styles/pressed = ExtResource("3_uufuj")
 theme_override_styles/hover = ExtResource("3_uufuj")
@@ -60,14 +81,16 @@ text = "Play
 alignment = 0
 
 [node name="optionsButton" type="Button" parent="mainCanvas/mainMenuContainer/VBoxContainer"]
-custom_minimum_size = Vector2(0, 75)
+visible = false
+custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
+theme = ExtResource("3_1e43x")
 theme_override_colors/font_color = Color(0.048783384, 0.04644969, 0, 1)
 theme_override_colors/font_focus_color = Color(0.31431612, 0.31431612, 0.3143161, 1)
 theme_override_colors/font_pressed_color = Color(0.19793725, 0.19793722, 0.19793722, 1)
 theme_override_colors/font_hover_color = Color(0.31431612, 0.31431612, 0.3143161, 1)
 theme_override_colors/font_hover_pressed_color = Color(0.19793725, 0.19793722, 0.19793722, 1)
-theme_override_font_sizes/font_size = 28
+theme_override_font_sizes/font_size = 48
 theme_override_styles/normal = ExtResource("2_uh2cu")
 theme_override_styles/pressed = ExtResource("3_uufuj")
 theme_override_styles/hover = ExtResource("3_uufuj")
@@ -77,15 +100,16 @@ text = "Options
 alignment = 0
 
 [node name="exitButton" type="Button" parent="mainCanvas/mainMenuContainer/VBoxContainer"]
-custom_minimum_size = Vector2(0, 75)
+custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
 focus_neighbor_bottom = NodePath("../playButton")
+theme = ExtResource("3_1e43x")
 theme_override_colors/font_color = Color(0.048783384, 0.04644969, 0, 1)
 theme_override_colors/font_focus_color = Color(0.31431612, 0.31431612, 0.3143161, 1)
 theme_override_colors/font_pressed_color = Color(0.19793725, 0.19793722, 0.19793722, 1)
 theme_override_colors/font_hover_color = Color(0.31431612, 0.31431612, 0.3143161, 1)
 theme_override_colors/font_hover_pressed_color = Color(0.19793725, 0.19793722, 0.19793722, 1)
-theme_override_font_sizes/font_size = 28
+theme_override_font_sizes/font_size = 48
 theme_override_styles/normal = ExtResource("2_uh2cu")
 theme_override_styles/pressed = ExtResource("3_uufuj")
 theme_override_styles/hover = ExtResource("3_uufuj")

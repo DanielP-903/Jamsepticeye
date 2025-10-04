@@ -1,0 +1,6 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://bb8hd8dei28q7"]
+
+[ext_resource type="FontFile" uid="uid://dh4qlh8iidxgw" path="res://Art/Font/ari-w9500-bold.ttf" id="1_lae6g"]
+
+[resource]
+default_font = ExtResource("1_lae6g")

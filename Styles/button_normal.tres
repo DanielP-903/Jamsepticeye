@@ -1,6 +1,6 @@
 [gd_resource type="StyleBoxTexture" load_steps=2 format=3 uid="uid://tepnb6eelafq"]
 
-[ext_resource type="Texture2D" uid="uid://cvr6tsgq3e1ip" path="res://Art/UI/PNG/Extra/Default/button_square_depth_line.png" id="1_syp3c"]
+[ext_resource type="Texture2D" uid="uid://cs6hwgj1covd7" path="res://Art/UI/Final/button_square_line.png" id="1_syp3c"]
 
 [resource]
 content_margin_left = 20.0
@@ -9,4 +9,4 @@ texture_margin_left = 7.0
 texture_margin_top = 7.0
 texture_margin_right = 7.0
 texture_margin_bottom = 7.0
-modulate_color = Color(1, 1, 0.8392157, 1)
+modulate_color = Color(0.8862616, 0.88626146, 0.8862615, 1)

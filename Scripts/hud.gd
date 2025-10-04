@@ -9,3 +9,6 @@ func _ready() -> void:
 func toggle_pause_menu():
 	Global.game_state_controller.toggle_visibility(main_hud)
 	Global.game_state_controller.toggle_visibility(pause_menu)
+	
+	if Global.game_state_controller.paused:
+		pause_menu.on_opened()

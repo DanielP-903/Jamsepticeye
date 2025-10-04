@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://kjaxjcbyulvh"]
+
+[ext_resource type="Shader" uid="uid://dpcnpyf8xtys2" path="res://Art/Shaders/crt.gdshader" id="1_34uj5"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_p0awf"]
+shader = ExtResource("1_34uj5")
+
+[sub_resource type="QuadMesh" id="QuadMesh_d1gif"]
+size = Vector2(1280, 720)
+center_offset = Vector3(640, 360, 0)
+
+[node name="CRT Effect" type="CanvasLayer"]
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="."]
+material = SubResource("ShaderMaterial_p0awf")
+mesh = SubResource("QuadMesh_d1gif")

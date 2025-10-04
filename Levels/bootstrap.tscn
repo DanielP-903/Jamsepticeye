@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://cxrj86kxbmqyf"]
+[gd_scene load_steps=15 format=3 uid="uid://cxrj86kxbmqyf"]
 
 [ext_resource type="Script" uid="uid://ba6rqq4tnkajp" path="res://Scripts/game_state_controller.gd" id="1_bsoci"]
 [ext_resource type="PackedScene" uid="uid://degg2nfo0e4jm" path="res://Levels/main-menu-level.tscn" id="2_agskk"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://d3qumjacxcqr2" path="res://Scenes/Managers/vfx_manager.tscn" id="7_i70vg"]
 [ext_resource type="Material" uid="uid://swrn15cgxw2x" path="res://VFX/sparkles.tres" id="8_8of2d"]
 [ext_resource type="AudioStream" uid="uid://dblvbb0svhyma" path="res://Audio/Music/menu_music.mp3" id="11_tar38"]
+[ext_resource type="PackedScene" uid="uid://kjaxjcbyulvh" path="res://Art/UI/crt_effect.tscn" id="14_yhjpe"]
 
 [node name="GameStateController" type="Node" node_paths=PackedStringArray("level", "gui")]
 script = ExtResource("1_bsoci")
@@ -61,3 +62,5 @@ music_map = Dictionary[int, AudioStream]({
 vfx_map = Dictionary[int, ParticleProcessMaterial]({
 1: ExtResource("8_8of2d")
 })
+
+[node name="CRT Effect" parent="." instance=ExtResource("14_yhjpe")]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://cd1ps5l7113me"]
+[gd_scene load_steps=10 format=3 uid="uid://cd1ps5l7113me"]
 
 [ext_resource type="Texture2D" uid="uid://xstrim5farja" path="res://Art/UI/Vector/Extra/input_square.svg" id="1_ni5j4"]
 [ext_resource type="Script" uid="uid://bey27otd44sjk" path="res://Scripts/hud.gd" id="1_v5wbf"]
@@ -7,7 +7,8 @@
 [ext_resource type="StyleBox" uid="uid://dqw3lurc05tmh" path="res://Styles/options_button_pressed.tres" id="3_otg58"]
 [ext_resource type="StyleBox" uid="uid://bnis12ta2onmb" path="res://Styles/exit_button_normal.tres" id="4_otg58"]
 [ext_resource type="StyleBox" uid="uid://caj8wmefkiykg" path="res://Styles/exit_button_pressed.tres" id="5_v5wbf"]
-[ext_resource type="Texture2D" uid="uid://bipxgd3s3kla" path="res://Art/UI/Vector/Grey/icon_cross.svg" id="6_cnagx"]
+[ext_resource type="Texture2D" uid="uid://c885yxg2fy4j7" path="res://Art/UI/Vector/Green/arrow_basic_e.svg" id="6_fqivn"]
+[ext_resource type="Texture2D" uid="uid://cu2v34bfg3k7m" path="res://Art/UI/PNG/Red/Double/icon_cross.png" id="9_qdh5o"]
 
 [node name="HUD" type="CanvasLayer" node_paths=PackedStringArray("main_hud", "pause_menu")]
 script = ExtResource("1_v5wbf")
@@ -52,8 +53,8 @@ theme_override_constants/margin_top = 30
 theme_override_constants/margin_right = 30
 theme_override_constants/margin_bottom = 30
 script = ExtResource("2_cnagx")
-quit_button = NodePath("NinePatchRect/buttonContainer/VBoxContainer/quitButton")
-resume_button = NodePath("NinePatchRect/MarginContainer/resumeButton")
+quit_button = NodePath("NinePatchRect/buttonContainer/HBoxContainer/quitButton")
+resume_button = NodePath("NinePatchRect/buttonContainer/HBoxContainer/resumeButton")
 
 [node name="NinePatchRect" type="NinePatchRect" parent="pauseMenu"]
 self_modulate = Color(0.8509804, 0.7254902, 0.53333336, 1)
@@ -98,7 +99,7 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -150.0
-offset_top = -230.0
+offset_top = -200.0
 offset_right = 150.0
 grow_horizontal = 2
 grow_vertical = 0
@@ -106,47 +107,20 @@ size_flags_horizontal = 4
 size_flags_vertical = 8
 theme_override_constants/margin_bottom = 30
 
-[node name="VBoxContainer" type="VBoxContainer" parent="pauseMenu/NinePatchRect/buttonContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="pauseMenu/NinePatchRect/buttonContainer"]
 custom_minimum_size = Vector2(300, 200)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 8
-theme_override_constants/separation = 12
+theme_override_constants/separation = 20
+alignment = 1
 
-[node name="quitButton" type="Button" parent="pauseMenu/NinePatchRect/buttonContainer/VBoxContainer"]
-custom_minimum_size = Vector2(0, 75)
+[node name="resumeButton" type="Button" parent="pauseMenu/NinePatchRect/buttonContainer/HBoxContainer"]
+custom_minimum_size = Vector2(75, 75)
 layout_mode = 2
 size_flags_horizontal = 4
-size_flags_vertical = 10
-theme_override_colors/font_color = Color(0.048783384, 0.04644969, 0, 1)
-theme_override_colors/font_focus_color = Color(0.31431612, 0.31431612, 0.3143161, 1)
-theme_override_colors/font_pressed_color = Color(0.19793725, 0.19793722, 0.19793722, 1)
-theme_override_colors/font_hover_color = Color(0.31431612, 0.31431612, 0.3143161, 1)
-theme_override_colors/font_hover_pressed_color = Color(0.19793725, 0.19793722, 0.19793722, 1)
-theme_override_font_sizes/font_size = 28
-theme_override_styles/normal = ExtResource("2_ypr6s")
-theme_override_styles/pressed = ExtResource("3_otg58")
-theme_override_styles/hover = ExtResource("3_otg58")
-theme_override_styles/focus = ExtResource("3_otg58")
-text = "Quit"
-alignment = 0
-
-[node name="MarginContainer" type="MarginContainer" parent="pauseMenu/NinePatchRect"]
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -72.00018
-offset_bottom = 75.0
-grow_horizontal = 0
-theme_override_constants/margin_top = -10
-theme_override_constants/margin_right = -10
-
-[node name="resumeButton" type="Button" parent="pauseMenu/NinePatchRect/MarginContainer"]
-custom_minimum_size = Vector2(30, 30)
-layout_mode = 2
-size_flags_horizontal = 8
-size_flags_vertical = 0
+size_flags_vertical = 8
+focus_neighbor_left = NodePath("../quitButton")
 theme_override_colors/font_color = Color(0.048783384, 0.04644969, 0, 1)
 theme_override_colors/font_focus_color = Color(0.31431612, 0.31431612, 0.3143161, 1)
 theme_override_colors/font_pressed_color = Color(0.19793725, 0.19793722, 0.19793722, 1)
@@ -157,9 +131,29 @@ theme_override_styles/normal = ExtResource("4_otg58")
 theme_override_styles/pressed = ExtResource("5_v5wbf")
 theme_override_styles/hover = ExtResource("5_v5wbf")
 theme_override_styles/focus = ExtResource("5_v5wbf")
-icon = ExtResource("6_cnagx")
+icon = ExtResource("6_fqivn")
 alignment = 0
 icon_alignment = 1
 
-[connection signal="pressed" from="pauseMenu/NinePatchRect/buttonContainer/VBoxContainer/quitButton" to="pauseMenu" method="_on_quit_button_pressed"]
-[connection signal="pressed" from="pauseMenu/NinePatchRect/MarginContainer/resumeButton" to="pauseMenu" method="_on_resume_button_pressed"]
+[node name="quitButton" type="Button" parent="pauseMenu/NinePatchRect/buttonContainer/HBoxContainer"]
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 10
+focus_neighbor_right = NodePath("../resumeButton")
+theme_override_colors/font_color = Color(0.048783384, 0.04644969, 0, 1)
+theme_override_colors/font_focus_color = Color(0.31431612, 0.31431612, 0.3143161, 1)
+theme_override_colors/font_pressed_color = Color(0.19793725, 0.19793722, 0.19793722, 1)
+theme_override_colors/font_hover_color = Color(0.31431612, 0.31431612, 0.3143161, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.19793725, 0.19793722, 0.19793722, 1)
+theme_override_font_sizes/font_size = 28
+theme_override_styles/normal = ExtResource("2_ypr6s")
+theme_override_styles/pressed = ExtResource("3_otg58")
+theme_override_styles/hover = ExtResource("3_otg58")
+theme_override_styles/focus = ExtResource("3_otg58")
+icon = ExtResource("9_qdh5o")
+alignment = 0
+icon_alignment = 1
+
+[connection signal="pressed" from="pauseMenu/NinePatchRect/buttonContainer/HBoxContainer/resumeButton" to="pauseMenu" method="_on_resume_button_pressed"]
+[connection signal="pressed" from="pauseMenu/NinePatchRect/buttonContainer/HBoxContainer/quitButton" to="pauseMenu" method="_on_quit_button_pressed"]
