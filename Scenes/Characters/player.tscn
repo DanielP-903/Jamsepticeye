@@ -1,15 +1,25 @@
-[gd_scene load_steps=4 format=3 uid="uid://cfqamaspdqwxd"]
+[gd_scene load_steps=7 format=3 uid="uid://cfqamaspdqwxd"]
 
-[ext_resource type="Script" uid="uid://cmnlxyglwq43i" path="res://Scripts/Player.gd" id="1_cko2x"]
+[ext_resource type="Script" uid="uid://cmnlxyglwq43i" path="res://Scripts/Player/Player.gd" id="1_cko2x"]
 [ext_resource type="Texture2D" uid="uid://d28dchqikcvle" path="res://Art/Tilesheets/colored-transparent.png" id="2_cko2x"]
+[ext_resource type="Script" uid="uid://b3o4benm0dg41" path="res://Scenes/Characters/PossessionHighlight.gd" id="3_al8ar"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_40svl"]
 size = Vector2(10, 10)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gy20a"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_al8ar"]
+
 [node name="Player" type="Node2D"]
 
-[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+[node name="CharacterBody2D" type="CharacterBody2D" parent="." node_paths=PackedStringArray("player_sprite", "crosshair", "possession_highlight_sprite", "possession_area", "crosshair_area")]
 script = ExtResource("1_cko2x")
+player_sprite = NodePath("Sprite2D")
+crosshair = NodePath("../Node/Crosshair")
+possession_highlight_sprite = NodePath("PossessionHighlight")
+possession_area = NodePath("PossessionHighlight/Area2D")
+crosshair_area = NodePath("../Node/Crosshair/Area2D")
 
 [node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
 texture = ExtResource("2_cko2x")
@@ -19,11 +29,36 @@ region_rect = Rect2(408, 17, 16, 16)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
 shape = SubResource("RectangleShape2D_40svl")
 
+[node name="PossessionHighlight" type="Sprite2D" parent="CharacterBody2D"]
+modulate = Color(0.60288316, 0.9700027, 0.2408626, 1)
+scale = Vector2(1.21, 1.21)
+texture = ExtResource("2_cko2x")
+region_enabled = true
+region_rect = Rect2(646, 204, 16, 16)
+region_filter_clip_enabled = true
+
+[node name="Area2D" type="Area2D" parent="CharacterBody2D/PossessionHighlight" node_paths=PackedStringArray("CharacterData")]
+collision_layer = 2
+collision_mask = 4
+script = ExtResource("3_al8ar")
+CharacterData = NodePath("../..")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D/PossessionHighlight/Area2D"]
+shape = SubResource("RectangleShape2D_gy20a")
+
 [node name="Node" type="Node" parent="."]
 
 [node name="Crosshair" type="Sprite2D" parent="Node"]
+visible = false
 modulate = Color(1, 0, 0, 1)
 scale = Vector2(0.4, 0.4)
 texture = ExtResource("2_cko2x")
 region_enabled = true
 region_rect = Rect2(272, 68, 16, 16)
+
+[node name="Area2D" type="Area2D" parent="Node/Crosshair"]
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node/Crosshair/Area2D"]
+shape = SubResource("RectangleShape2D_al8ar")

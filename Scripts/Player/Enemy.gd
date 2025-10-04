@@ -1,10 +1,12 @@
 extends CharacterCommon
 
-@onready var target = $Player
-var is_highlighted: bool = false;
+class_name Enemy
 
-func ai_get_direction():
-	return target.position - self.position
+#@onready var target = $Player
+#var is_highlighted: bool = false;
+
+#func ai_get_direction():
+#	return target.position - self.position
 	
 #func ai_move():
 	#var direction = ai_get_direction()
