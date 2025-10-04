@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://csbc62e5c4cra"]
+[gd_scene load_steps=3 format=3 uid="uid://csbc62e5c4cra"]
 
 [ext_resource type="Script" uid="uid://dxq1okhc2iudx" path="res://Scripts/loading_screen.gd" id="1_nnjmt"]
+[ext_resource type="Theme" uid="uid://bb8hd8dei28q7" path="res://Styles/text_button_theme.tres" id="2_gq1a5"]
 
 [node name="loading" type="CanvasLayer" node_paths=PackedStringArray("progressBar")]
 script = ExtResource("1_nnjmt")
@@ -25,6 +26,7 @@ theme_override_constants/separation = 100
 
 [node name="titleLabel" type="Label" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
+theme = ExtResource("2_gq1a5")
 theme_override_font_sizes/font_size = 52
 text = "Loading..."
 horizontal_alignment = 1
@@ -32,4 +34,4 @@ horizontal_alignment = 1
 [node name="progressBar" type="ProgressBar" parent="MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(400, 0)
 layout_mode = 2
-rounded = true
+theme = ExtResource("2_gq1a5")

@@ -1,12 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://cd1ps5l7113me"]
+[gd_scene load_steps=9 format=3 uid="uid://cd1ps5l7113me"]
 
-[ext_resource type="Texture2D" uid="uid://xstrim5farja" path="res://Art/UI/Vector/Extra/input_square.svg" id="1_ni5j4"]
 [ext_resource type="Script" uid="uid://bey27otd44sjk" path="res://Scripts/hud.gd" id="1_v5wbf"]
 [ext_resource type="Script" uid="uid://bw3323dc1jyhv" path="res://Scripts/pause_menu.gd" id="2_cnagx"]
+[ext_resource type="Theme" uid="uid://bb8hd8dei28q7" path="res://Styles/text_button_theme.tres" id="2_qdh5o"]
 [ext_resource type="StyleBox" uid="uid://d2qpn6ltwbu0d" path="res://Styles/options_button_normal.tres" id="2_ypr6s"]
 [ext_resource type="StyleBox" uid="uid://dqw3lurc05tmh" path="res://Styles/options_button_pressed.tres" id="3_otg58"]
-[ext_resource type="StyleBox" uid="uid://bnis12ta2onmb" path="res://Styles/exit_button_normal.tres" id="4_otg58"]
-[ext_resource type="StyleBox" uid="uid://caj8wmefkiykg" path="res://Styles/exit_button_pressed.tres" id="5_v5wbf"]
+[ext_resource type="Texture2D" uid="uid://c6p66fushv7bl" path="res://Art/UI/Final/sub_background.png" id="4_7wqu8"]
 [ext_resource type="Texture2D" uid="uid://c885yxg2fy4j7" path="res://Art/UI/Vector/Green/arrow_basic_e.svg" id="6_fqivn"]
 [ext_resource type="Texture2D" uid="uid://cu2v34bfg3k7m" path="res://Art/UI/PNG/Red/Double/icon_cross.png" id="9_qdh5o"]
 
@@ -30,6 +29,8 @@ theme_override_constants/margin_bottom = 30
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
+theme = ExtResource("2_qdh5o")
+theme_override_font_sizes/font_size = 32
 text = "Health = 100%"
 
 [node name="pauseMenu" type="MarginContainer" parent="." node_paths=PackedStringArray("quit_button", "resume_button")]
@@ -57,12 +58,12 @@ quit_button = NodePath("NinePatchRect/buttonContainer/HBoxContainer/quitButton")
 resume_button = NodePath("NinePatchRect/buttonContainer/HBoxContainer/resumeButton")
 
 [node name="NinePatchRect" type="NinePatchRect" parent="pauseMenu"]
-self_modulate = Color(0.8509804, 0.7254902, 0.53333336, 1)
+self_modulate = Color(0.2767229, 0.27671283, 0.28526014, 1)
 custom_minimum_size = Vector2(250, 200)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-texture = ExtResource("1_ni5j4")
+texture = ExtResource("4_7wqu8")
 patch_margin_left = 7
 patch_margin_top = 7
 patch_margin_right = 7
@@ -85,7 +86,10 @@ theme_override_constants/margin_top = 20
 [node name="Label" type="Label" parent="pauseMenu/NinePatchRect/titleContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
-theme_override_constants/outline_size = 6
+theme = ExtResource("2_qdh5o")
+theme_override_colors/font_shadow_color = Color(0.27058825, 0.27058825, 0.27058825, 1)
+theme_override_constants/shadow_offset_y = 3
+theme_override_constants/outline_size = 0
 theme_override_font_sizes/font_size = 32
 text = "- PAUSED -"
 horizontal_alignment = 1
@@ -127,10 +131,10 @@ theme_override_colors/font_pressed_color = Color(0.19793725, 0.19793722, 0.19793
 theme_override_colors/font_hover_color = Color(0.31431612, 0.31431612, 0.3143161, 1)
 theme_override_colors/font_hover_pressed_color = Color(0.19793725, 0.19793722, 0.19793722, 1)
 theme_override_font_sizes/font_size = 28
-theme_override_styles/normal = ExtResource("4_otg58")
-theme_override_styles/pressed = ExtResource("5_v5wbf")
-theme_override_styles/hover = ExtResource("5_v5wbf")
-theme_override_styles/focus = ExtResource("5_v5wbf")
+theme_override_styles/normal = ExtResource("2_ypr6s")
+theme_override_styles/pressed = ExtResource("3_otg58")
+theme_override_styles/hover = ExtResource("3_otg58")
+theme_override_styles/focus = ExtResource("3_otg58")
 icon = ExtResource("6_fqivn")
 alignment = 0
 icon_alignment = 1
