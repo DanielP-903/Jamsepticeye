@@ -36,12 +36,12 @@ func play_vfx(vfx_type: Global.EVFXType, pos: Vector2 = Vector2.ZERO) -> void:
 	if vfx_map.get(vfx_type) == null:
 		push_error("Couldn't play " + Global.EVFXType.keys()[vfx_type] + " because it doesn't exist in the vfx_map!")
 		return
-	print("Playing: " + Global.EVFXType.keys()[vfx_type])
+	#print("Playing: " + Global.EVFXType.keys()[vfx_type])
 	var vfx_emitter = _get_free_vfx_from_pool()
 	vfx_emitter.play_vfx(vfx_map[vfx_type], vfx_type, pos)
 
 func stop_audio(vfx_type: Global.EVFXType) -> bool:
-	print("Stopping: " + Global.EVFXType.keys()[vfx_type])
+	#print("Stopping: " + Global.EVFXType.keys()[vfx_type])
 	for vfx in vfx_pool:
 		if vfx.get_vfx_type() == vfx_type:
 			vfx.deactivate()
@@ -49,7 +49,7 @@ func stop_audio(vfx_type: Global.EVFXType) -> bool:
 	return false
 
 func stop_all_vfx() -> void:
-	print("Stopping All Audio!")
+	#print("Stopping All Audio!")
 	for vfx in vfx_pool:
 		if vfx.is_active():
 			vfx.deactivate()

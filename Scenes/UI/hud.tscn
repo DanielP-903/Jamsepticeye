@@ -1,13 +1,18 @@
-[gd_scene load_steps=7 format=3 uid="uid://cd1ps5l7113me"]
+[gd_scene load_steps=9 format=3 uid="uid://cd1ps5l7113me"]
 
 [ext_resource type="Texture2D" uid="uid://xstrim5farja" path="res://Art/UI/Vector/Extra/input_square.svg" id="1_ni5j4"]
+[ext_resource type="Script" uid="uid://bey27otd44sjk" path="res://Scripts/hud.gd" id="1_v5wbf"]
+[ext_resource type="Script" uid="uid://bw3323dc1jyhv" path="res://Scripts/pause_menu.gd" id="2_cnagx"]
 [ext_resource type="StyleBox" uid="uid://d2qpn6ltwbu0d" path="res://Styles/options_button_normal.tres" id="2_ypr6s"]
 [ext_resource type="StyleBox" uid="uid://dqw3lurc05tmh" path="res://Styles/options_button_pressed.tres" id="3_otg58"]
 [ext_resource type="StyleBox" uid="uid://bnis12ta2onmb" path="res://Styles/exit_button_normal.tres" id="4_otg58"]
 [ext_resource type="StyleBox" uid="uid://caj8wmefkiykg" path="res://Styles/exit_button_pressed.tres" id="5_v5wbf"]
 [ext_resource type="Texture2D" uid="uid://bipxgd3s3kla" path="res://Art/UI/Vector/Grey/icon_cross.svg" id="6_cnagx"]
 
-[node name="HUD" type="CanvasLayer"]
+[node name="HUD" type="CanvasLayer" node_paths=PackedStringArray("main_hud", "pause_menu")]
+script = ExtResource("1_v5wbf")
+main_hud = NodePath("mainCanvas")
+pause_menu = NodePath("pauseMenu")
 
 [node name="mainCanvas" type="MarginContainer" parent="."]
 anchors_preset = 15
@@ -26,7 +31,7 @@ size_flags_horizontal = 0
 size_flags_vertical = 0
 text = "Health = 100%"
 
-[node name="pauseMenu" type="MarginContainer" parent="."]
+[node name="pauseMenu" type="MarginContainer" parent="." node_paths=PackedStringArray("quit_button", "resume_button")]
 visible = false
 custom_minimum_size = Vector2(400, 50)
 anchors_preset = 8
@@ -46,6 +51,9 @@ theme_override_constants/margin_left = 30
 theme_override_constants/margin_top = 30
 theme_override_constants/margin_right = 30
 theme_override_constants/margin_bottom = 30
+script = ExtResource("2_cnagx")
+quit_button = NodePath("NinePatchRect/buttonContainer/VBoxContainer/quitButton")
+resume_button = NodePath("NinePatchRect/MarginContainer/resumeButton")
 
 [node name="NinePatchRect" type="NinePatchRect" parent="pauseMenu"]
 self_modulate = Color(0.8509804, 0.7254902, 0.53333336, 1)
@@ -152,3 +160,6 @@ theme_override_styles/focus = ExtResource("5_v5wbf")
 icon = ExtResource("6_cnagx")
 alignment = 0
 icon_alignment = 1
+
+[connection signal="pressed" from="pauseMenu/NinePatchRect/buttonContainer/VBoxContainer/quitButton" to="pauseMenu" method="_on_quit_button_pressed"]
+[connection signal="pressed" from="pauseMenu/NinePatchRect/MarginContainer/resumeButton" to="pauseMenu" method="_on_resume_button_pressed"]

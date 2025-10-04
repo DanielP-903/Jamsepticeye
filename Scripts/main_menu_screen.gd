@@ -51,41 +51,19 @@ func _update_focus() -> void:
 
 func _update_buttons() -> void:
 	for button in menu_buttons:
-		button_hover(button, 15, 0.1)
-
-func button_hover(button: Button, tween_amount, duration) -> void:
-	if !button:
-		return
-	
-	if button.has_focus() || button.is_hovered():
-		tween(button, "position", Vector2(tween_amount, button.position.y), duration)
-	else:
-		tween(button, "position",Vector2(0, button.position.y), duration)
-
-func tween(button, property, amount, duration) -> void:
-	var new_tween = create_tween()
-	new_tween.tween_property(button, property, amount, duration)
-
-func toggle_visibility(object):
-	if !object:
-		return
-	
-	if object.visible:
-		object.visible = false
-	else:
-		object.visible = true
+		Global.game_state_controller.button_hover(button, Global.EButtonTweenType.MoveRight, 15, 0.1)
 
 func _on_play_button_pressed() -> void:
-	Global.game_state_controller.change_world("res://Levels/main.tscn")
+	Global.game_state_controller.change_level(Global.ELevelType.MainLevel)
 
 func _on_options_button_pressed() -> void:
-	toggle_visibility(main_menu)
-	toggle_visibility(options_menu)
+	Global.game_state_controller.toggle_visibility(main_menu)
+	Global.game_state_controller.toggle_visibility(options_menu)
 
 func _on_exit_button_pressed() -> void:
 	get_tree().quit()
 
 
 func _on_go_back_button_pressed() -> void:
-	toggle_visibility(main_menu)
-	toggle_visibility(options_menu)
+	Global.game_state_controller.toggle_visibility(main_menu)
+	Global.game_state_controller.toggle_visibility(options_menu)

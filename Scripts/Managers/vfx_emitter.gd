@@ -9,7 +9,7 @@ func _ready() -> void:
 
 func activate() -> void:
 	active = true
-	print("Activated: " + name)
+	#print("Activated: " + name)
 
 func deactivate() -> void:
 	if emitting:
@@ -17,7 +17,7 @@ func deactivate() -> void:
 	position = Vector2.ZERO
 	process_material = null
 	active = false
-	print("Deactivated: " + name)
+	#print("Deactivated: " + name)
 
 func is_active() -> bool:
 	return active

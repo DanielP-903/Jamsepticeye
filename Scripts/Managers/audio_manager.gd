@@ -30,7 +30,7 @@ func play_music(music_type: Global.EMusicType):
 	if music_map.get(music_type) == null:
 		push_error("Couldn't play " + Global.EMusicType.keys()[music_type] + " because it doesn't exist in the music_map!")
 		return
-	print("Playing: " + Global.EMusicType.keys()[music_type])
+	#print("Playing: " + Global.EMusicType.keys()[music_type])
 	if music.playing:
 		music.stop()
 	music.stream = music_map[music_type]
@@ -65,7 +65,7 @@ func play_audio(audio_type: Global.EAudioType):
 	if audio_map.get(audio_type) == null:
 		push_error("Couldn't play " + Global.EAudioType.keys()[audio_type] + " because it doesn't exist in the audio_map!")
 		return
-	print("Playing: " + Global.EAudioType.keys()[audio_type])
+	#print("Playing: " + Global.EAudioType.keys()[audio_type])
 	var audio_source = _get_free_audio_from_pool()
 	audio_source.play_audio(audio_map[audio_type], audio_type)
 
@@ -78,10 +78,18 @@ func stop_audio(audio_type: Global.EAudioType) -> bool:
 	return false
 
 func stop_all_audio(also_stop_music = false) -> void:
-	print("Stopping All Audio!")
+	#print("Stopping All Audio!")
 	for audio in audio_pool:
 		if audio.is_active():
 			audio.deactivate()
 	if also_stop_music:
-		print("Also Stopping Music!")
+		#print("Also Stopping Music!")
 		stop_music()
+
+func toggle_pause_music_filter() -> void:
+	if Global.game_state_controller.paused:
+		music.pitch_scale = 0.75
+		music.volume_linear = 0.75
+	else:
+		music.pitch_scale = 1.0
+		music.volume_linear = 1.0
