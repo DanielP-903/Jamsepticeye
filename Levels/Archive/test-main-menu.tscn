@@ -577,13 +577,13 @@ layout_mode = 2
 theme_override_styles/separator = SubResource("StyleBoxEmpty_js1g3")
 
 [node name="helpMenu" type="MarginContainer" parent="popupMenu"]
-visible = false
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_constants/margin_left = 0
 
 [node name="NinePatchRect" type="NinePatchRect" parent="popupMenu/helpMenu"]
+visible = false
 self_modulate = Color(0.8509804, 0.7254902, 0.53333336, 1)
 custom_minimum_size = Vector2(300, 400)
 layout_mode = 2

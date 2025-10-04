@@ -43,6 +43,9 @@ func change_world(world_name: String, load_type: Global.ESceneChange = Global.ES
 	loading_screen.begin_loading(world_name)
 
 func finalise_transition(scene):
+	if gui.get_child_count() > 0:
+		gui.get_child(0).queue_free()
 	var new_scene = scene.instantiate()
 	world.add_child(new_scene)
 	current_world_scene = new_scene
+	

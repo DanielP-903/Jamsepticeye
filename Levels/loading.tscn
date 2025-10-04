@@ -2,23 +2,20 @@
 
 [ext_resource type="Script" uid="uid://dxq1okhc2iudx" path="res://Scripts/loading_screen.gd" id="1_nnjmt"]
 
-[node name="loading" type="Control" node_paths=PackedStringArray("progressBar")]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="loading" type="CanvasLayer" node_paths=PackedStringArray("progressBar")]
 script = ExtResource("1_nnjmt")
 progressBar = NodePath("MarginContainer/VBoxContainer/progressBar")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
-layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="MarginContainer"]
+layout_mode = 2
+color = Color(0.20871013, 0.20871016, 0.20871013, 1)
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2

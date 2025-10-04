@@ -1,0 +1,154 @@
+[gd_scene load_steps=7 format=3 uid="uid://cd1ps5l7113me"]
+
+[ext_resource type="Texture2D" uid="uid://xstrim5farja" path="res://Art/UI/Vector/Extra/input_square.svg" id="1_ni5j4"]
+[ext_resource type="StyleBox" uid="uid://d2qpn6ltwbu0d" path="res://Styles/options_button_normal.tres" id="2_ypr6s"]
+[ext_resource type="StyleBox" uid="uid://dqw3lurc05tmh" path="res://Styles/options_button_pressed.tres" id="3_otg58"]
+[ext_resource type="StyleBox" uid="uid://bnis12ta2onmb" path="res://Styles/exit_button_normal.tres" id="4_otg58"]
+[ext_resource type="StyleBox" uid="uid://caj8wmefkiykg" path="res://Styles/exit_button_pressed.tres" id="5_v5wbf"]
+[ext_resource type="Texture2D" uid="uid://bipxgd3s3kla" path="res://Art/UI/Vector/Grey/icon_cross.svg" id="6_cnagx"]
+
+[node name="HUD" type="CanvasLayer"]
+
+[node name="mainCanvas" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 30
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 30
+
+[node name="Label" type="Label" parent="mainCanvas"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+text = "Health = 100%"
+
+[node name="pauseMenu" type="MarginContainer" parent="."]
+visible = false
+custom_minimum_size = Vector2(400, 50)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -230.0
+offset_top = -195.0
+offset_right = 230.0
+offset_bottom = 195.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 30
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 30
+
+[node name="NinePatchRect" type="NinePatchRect" parent="pauseMenu"]
+self_modulate = Color(0.8509804, 0.7254902, 0.53333336, 1)
+custom_minimum_size = Vector2(250, 200)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("1_ni5j4")
+patch_margin_left = 7
+patch_margin_top = 7
+patch_margin_right = 7
+patch_margin_bottom = 7
+
+[node name="titleContainer" type="MarginContainer" parent="pauseMenu/NinePatchRect"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -80.5
+offset_right = 80.5
+offset_bottom = 64.66667
+grow_horizontal = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_top = 20
+
+[node name="Label" type="Label" parent="pauseMenu/NinePatchRect/titleContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/outline_size = 6
+theme_override_font_sizes/font_size = 32
+text = "- PAUSED -"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="buttonContainer" type="MarginContainer" parent="pauseMenu/NinePatchRect"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -150.0
+offset_top = -230.0
+offset_right = 150.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme_override_constants/margin_bottom = 30
+
+[node name="VBoxContainer" type="VBoxContainer" parent="pauseMenu/NinePatchRect/buttonContainer"]
+custom_minimum_size = Vector2(300, 200)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme_override_constants/separation = 12
+
+[node name="quitButton" type="Button" parent="pauseMenu/NinePatchRect/buttonContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 75)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 10
+theme_override_colors/font_color = Color(0.048783384, 0.04644969, 0, 1)
+theme_override_colors/font_focus_color = Color(0.31431612, 0.31431612, 0.3143161, 1)
+theme_override_colors/font_pressed_color = Color(0.19793725, 0.19793722, 0.19793722, 1)
+theme_override_colors/font_hover_color = Color(0.31431612, 0.31431612, 0.3143161, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.19793725, 0.19793722, 0.19793722, 1)
+theme_override_font_sizes/font_size = 28
+theme_override_styles/normal = ExtResource("2_ypr6s")
+theme_override_styles/pressed = ExtResource("3_otg58")
+theme_override_styles/hover = ExtResource("3_otg58")
+theme_override_styles/focus = ExtResource("3_otg58")
+text = "Quit"
+alignment = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="pauseMenu/NinePatchRect"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -72.00018
+offset_bottom = 75.0
+grow_horizontal = 0
+theme_override_constants/margin_top = -10
+theme_override_constants/margin_right = -10
+
+[node name="resumeButton" type="Button" parent="pauseMenu/NinePatchRect/MarginContainer"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(0.048783384, 0.04644969, 0, 1)
+theme_override_colors/font_focus_color = Color(0.31431612, 0.31431612, 0.3143161, 1)
+theme_override_colors/font_pressed_color = Color(0.19793725, 0.19793722, 0.19793722, 1)
+theme_override_colors/font_hover_color = Color(0.31431612, 0.31431612, 0.3143161, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.19793725, 0.19793722, 0.19793722, 1)
+theme_override_font_sizes/font_size = 28
+theme_override_styles/normal = ExtResource("4_otg58")
+theme_override_styles/pressed = ExtResource("5_v5wbf")
+theme_override_styles/hover = ExtResource("5_v5wbf")
+theme_override_styles/focus = ExtResource("5_v5wbf")
+icon = ExtResource("6_cnagx")
+alignment = 0
+icon_alignment = 1

@@ -1,5 +1,8 @@
 extends MarginContainer
 
+@export var main_menu: MarginContainer
+@export var options_menu: MarginContainer
+
 @export var play_button: Button
 @export var options_button: Button
 @export var exit_button: Button
@@ -63,12 +66,26 @@ func tween(button, property, amount, duration) -> void:
 	var new_tween = create_tween()
 	new_tween.tween_property(button, property, amount, duration)
 
+func toggle_visibility(object):
+	if !object:
+		return
+	
+	if object.visible:
+		object.visible = false
+	else:
+		object.visible = true
+
 func _on_play_button_pressed() -> void:
-	Global.game_state_controller.change_world("res://Levels/dan-test.tscn")
+	Global.game_state_controller.change_world("res://Levels/main.tscn")
 
 func _on_options_button_pressed() -> void:
-	# TODO
-	pass
+	toggle_visibility(main_menu)
+	toggle_visibility(options_menu)
 
 func _on_exit_button_pressed() -> void:
 	get_tree().quit()
+
+
+func _on_go_back_button_pressed() -> void:
+	toggle_visibility(main_menu)
+	toggle_visibility(options_menu)

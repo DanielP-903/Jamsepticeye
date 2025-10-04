@@ -1,49 +1,47 @@
-[gd_scene load_steps=5 format=3 uid="uid://bfly7dlnvh5b3"]
+[gd_scene load_steps=8 format=3 uid="uid://bfly7dlnvh5b3"]
 
 [ext_resource type="Script" uid="uid://b77krr6mejgu0" path="res://Scripts/main_menu_screen.gd" id="1_lyjc4"]
 [ext_resource type="Texture2D" uid="uid://csp8gbfce2afr" path="res://Art/UI/amazing_bg.png" id="2_lyjc4"]
 [ext_resource type="StyleBox" uid="uid://tepnb6eelafq" path="res://Styles/button_normal.tres" id="2_uh2cu"]
 [ext_resource type="StyleBox" uid="uid://cmiyla1mseoge" path="res://Styles/button_pressed.tres" id="3_uufuj"]
+[ext_resource type="Texture2D" uid="uid://xstrim5farja" path="res://Art/UI/Vector/Extra/input_square.svg" id="5_uufuj"]
+[ext_resource type="StyleBox" uid="uid://d2qpn6ltwbu0d" path="res://Styles/options_button_normal.tres" id="6_ef2fd"]
+[ext_resource type="StyleBox" uid="uid://dqw3lurc05tmh" path="res://Styles/options_button_pressed.tres" id="7_yt2i1"]
 
-[node name="mainMenu" type="Control"]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="mainMenu" type="CanvasLayer"]
 
-[node name="mainMenuScreen" type="MarginContainer" parent="." node_paths=PackedStringArray("play_button", "options_button", "exit_button")]
-layout_mode = 1
+[node name="mainCanvas" type="MarginContainer" parent="." node_paths=PackedStringArray("main_menu", "options_menu", "play_button", "options_button", "exit_button")]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_lyjc4")
-play_button = NodePath("MarginContainer/VBoxContainer/playButton")
-options_button = NodePath("MarginContainer/VBoxContainer/optionsButton")
-exit_button = NodePath("MarginContainer/VBoxContainer/exitButton")
+main_menu = NodePath("mainMenuContainer")
+options_menu = NodePath("optionsContainer")
+play_button = NodePath("mainMenuContainer/VBoxContainer/playButton")
+options_button = NodePath("mainMenuContainer/VBoxContainer/optionsButton")
+exit_button = NodePath("mainMenuContainer/VBoxContainer/exitButton")
 
-[node name="TextureRect" type="TextureRect" parent="mainMenuScreen"]
+[node name="TextureRect" type="TextureRect" parent="mainCanvas"]
 layout_mode = 2
 texture = ExtResource("2_lyjc4")
 
-[node name="MarginContainer" type="MarginContainer" parent="mainMenuScreen"]
+[node name="mainMenuContainer" type="MarginContainer" parent="mainCanvas"]
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 4
 theme_override_constants/margin_left = 50
 theme_override_constants/margin_top = 100
 
-[node name="VBoxContainer" type="VBoxContainer" parent="mainMenuScreen/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="mainCanvas/mainMenuContainer"]
 custom_minimum_size = Vector2(300, 300)
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 4
 theme_override_constants/separation = 12
 
-[node name="playButton" type="Button" parent="mainMenuScreen/MarginContainer/VBoxContainer"]
+[node name="playButton" type="Button" parent="mainCanvas/mainMenuContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 75)
 layout_mode = 2
 focus_neighbor_top = NodePath("../exitButton")
@@ -61,7 +59,7 @@ text = "Play
 "
 alignment = 0
 
-[node name="optionsButton" type="Button" parent="mainMenuScreen/MarginContainer/VBoxContainer"]
+[node name="optionsButton" type="Button" parent="mainCanvas/mainMenuContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 75)
 layout_mode = 2
 theme_override_colors/font_color = Color(0.048783384, 0.04644969, 0, 1)
@@ -78,7 +76,7 @@ text = "Options
 "
 alignment = 0
 
-[node name="exitButton" type="Button" parent="mainMenuScreen/MarginContainer/VBoxContainer"]
+[node name="exitButton" type="Button" parent="mainCanvas/mainMenuContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 75)
 layout_mode = 2
 focus_neighbor_bottom = NodePath("../playButton")
@@ -95,6 +93,70 @@ theme_override_styles/focus = ExtResource("3_uufuj")
 text = "Exit"
 alignment = 0
 
-[connection signal="pressed" from="mainMenuScreen/MarginContainer/VBoxContainer/playButton" to="mainMenuScreen" method="_on_play_button_pressed"]
-[connection signal="pressed" from="mainMenuScreen/MarginContainer/VBoxContainer/optionsButton" to="mainMenuScreen" method="_on_options_button_pressed"]
-[connection signal="pressed" from="mainMenuScreen/MarginContainer/VBoxContainer/exitButton" to="mainMenuScreen" method="_on_exit_button_pressed"]
+[node name="optionsContainer" type="MarginContainer" parent="mainCanvas"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 100
+
+[node name="NinePatchRect" type="NinePatchRect" parent="mainCanvas/optionsContainer"]
+self_modulate = Color(0.8509804, 0.7254902, 0.53333336, 1)
+custom_minimum_size = Vector2(400, 400)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("5_uufuj")
+patch_margin_left = 7
+patch_margin_top = 7
+patch_margin_right = 7
+patch_margin_bottom = 7
+
+[node name="titleContainer" type="MarginContainer" parent="mainCanvas/optionsContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 20
+
+[node name="Label" type="Label" parent="mainCanvas/optionsContainer/titleContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_constants/outline_size = 2
+theme_override_font_sizes/font_size = 32
+text = "OPTIONS"
+
+[node name="buttonContainer" type="MarginContainer" parent="mainCanvas/optionsContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 100
+theme_override_constants/margin_bottom = 30
+
+[node name="VBoxContainer" type="VBoxContainer" parent="mainCanvas/optionsContainer/buttonContainer"]
+custom_minimum_size = Vector2(300, 200)
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_constants/separation = 12
+
+[node name="goBackButton" type="Button" parent="mainCanvas/optionsContainer/buttonContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 75)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 10
+theme_override_colors/font_color = Color(0.048783384, 0.04644969, 0, 1)
+theme_override_colors/font_focus_color = Color(0.31431612, 0.31431612, 0.3143161, 1)
+theme_override_colors/font_pressed_color = Color(0.19793725, 0.19793722, 0.19793722, 1)
+theme_override_colors/font_hover_color = Color(0.31431612, 0.31431612, 0.3143161, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.19793725, 0.19793722, 0.19793722, 1)
+theme_override_font_sizes/font_size = 28
+theme_override_styles/normal = ExtResource("6_ef2fd")
+theme_override_styles/pressed = ExtResource("7_yt2i1")
+theme_override_styles/hover = ExtResource("7_yt2i1")
+theme_override_styles/focus = ExtResource("7_yt2i1")
+text = "Back"
+alignment = 0
+
+[connection signal="pressed" from="mainCanvas/mainMenuContainer/VBoxContainer/playButton" to="mainCanvas" method="_on_play_button_pressed"]
+[connection signal="pressed" from="mainCanvas/mainMenuContainer/VBoxContainer/optionsButton" to="mainCanvas" method="_on_options_button_pressed"]
+[connection signal="pressed" from="mainCanvas/mainMenuContainer/VBoxContainer/exitButton" to="mainCanvas" method="_on_exit_button_pressed"]
+[connection signal="pressed" from="mainCanvas/optionsContainer/buttonContainer/VBoxContainer/goBackButton" to="mainCanvas" method="_on_go_back_button_pressed"]
