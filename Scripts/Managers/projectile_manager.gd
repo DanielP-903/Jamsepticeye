@@ -13,9 +13,10 @@ func _ready() -> void:
 
 func _get_free_projectile_from_pool() -> Projectile:
 	for n in range(projectile_pool.size()):
-		if !projectile_pool[n].is_active():
-			projectile_pool[n].activate()
-			return projectile_pool[n]
+		if(projectile_pool[n] != null):
+			if !projectile_pool[n].is_active():
+				projectile_pool[n].activate()
+				return projectile_pool[n]
 	
 	# No free vfx, make one
 	var instance = _create_projectile()
@@ -31,10 +32,13 @@ func _create_projectile() -> Projectile:
 	return instance
 
 func spawn_projectile(position: Vector2, direction: Vector2, projectile_owner: CharacterCommon) -> Projectile:
-	var projectile = _get_free_projectile_from_pool()
-	projectile.position = position
+	var projectile = _get_free_projectile_from_pool() as Projectile
+	if(projectile == null):
+		print("uh oh, projectile should not be null!")
+		return projectile
+	else:
+		projectile.setup_projectile(position, direction)
 	# TODO
-	#projectile.direction = direction
 	#projectile.owning_character = projectile_owner # Should be used for collision (aka don't collide with the owner)
 	return projectile
 

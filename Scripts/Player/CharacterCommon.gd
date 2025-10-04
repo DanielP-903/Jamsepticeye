@@ -4,14 +4,17 @@ class_name CharacterCommon
 
 @export var health: int = 100
 @export var speed: int = 100
+@export var fire_timeout: float = 0.5
 @export var player_sprite : Sprite2D
 @export var crosshair: Sprite2D
 @export var possession_highlight_sprite: Sprite2D
 @export var possession_area: Area2D
 @export var crosshair_area: Area2D
+@export var projectile_manager: ProjectileManager
 var is_possessed: bool = false
 var is_highlighted: bool = false
 var ignore_physics_tick: bool = false
+var fire_timer: float = 0.0
 
 func _physics_process(_delta) -> void:
 	if(!ignore_physics_tick):
@@ -24,11 +27,15 @@ func _physics_process(_delta) -> void:
 func _process(_delta) -> void:
 	show_possession_highlight()
 	_update_sprites()
+	check_health_for_death()
 	if(crosshair != null):
 		if(!crosshair.visible && is_possessed):
 			crosshair.show()
 		elif(crosshair.visible && !is_possessed):
 			crosshair.hide()
+			
+	if(fire_timer < fire_timeout):
+		fire_timer += _delta
 
 #	Move the player
 func get_input() -> void:
@@ -51,8 +58,13 @@ func get_input() -> void:
 					enemy_character.is_possessed = true
 					enemy_character.ignore_physics_tick = true
 					is_possessed = false
-					print(get_parent())
 					get_parent().queue_free.call_deferred()
+					
+	if(Input.is_action_pressed("fire") && fire_timer >= fire_timeout):
+		var direction = get_global_mouse_position() - position
+		projectile_manager.spawn_projectile(position, direction, self)
+		fire_timer = 0.0
+		print("pew")
 
 func get_health() -> int:
 	return health
@@ -86,3 +98,11 @@ func _update_sprites() -> void:
 			
 func get_z() -> float:
 	return player_sprite.position.y
+
+func check_health_for_death() -> void:
+	if(health <= 0):
+		if(!is_possessed):
+			get_owner().queue_free()
+		else:
+			get_owner().queue_free()
+			#	TODO: Do not destroy player, end game instead.

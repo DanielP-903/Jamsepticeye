@@ -1,6 +1,24 @@
-[gd_scene load_steps=2 format=3 uid="uid://bnsj20nesohi6"]
+[gd_scene load_steps=4 format=3 uid="uid://bnsj20nesohi6"]
 
 [ext_resource type="Script" uid="uid://cl2dcmhushcyo" path="res://Scripts/Managers/projectile.gd" id="1_87mem"]
+[ext_resource type="Texture2D" uid="uid://d28dchqikcvle" path="res://Art/Tilesheets/colored-transparent.png" id="2_q3ye2"]
 
-[node name="Projectile" type="Node2D"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_h1sad"]
+
+[node name="Projectile" type="Node2D" node_paths=PackedStringArray("collider")]
+modulate = Color(1, 0.54901963, 0.24313726, 1)
 script = ExtResource("1_87mem")
+collider = NodePath("Sprite2D/Area2D")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+rotation = 2.3561945
+texture = ExtResource("2_q3ye2")
+region_enabled = true
+region_rect = Rect2(493, 187, 16, 16)
+
+[node name="Area2D" type="Area2D" parent="Sprite2D"]
+collision_layer = 128
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/Area2D"]
+shape = SubResource("CircleShape2D_h1sad")
