@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://cxrj86kxbmqyf"]
+[gd_scene load_steps=17 format=3 uid="uid://cxrj86kxbmqyf"]
 
 [ext_resource type="Script" uid="uid://ba6rqq4tnkajp" path="res://Scripts/game_state_controller.gd" id="1_bsoci"]
 [ext_resource type="PackedScene" uid="uid://degg2nfo0e4jm" path="res://Levels/main-menu-level.tscn" id="2_agskk"]
@@ -15,6 +15,7 @@
 [ext_resource type="AudioStream" uid="uid://dblvbb0svhyma" path="res://Audio/Music/menu_music.mp3" id="11_tar38"]
 [ext_resource type="PackedScene" uid="uid://bfcs11l03vmht" path="res://Scenes/Managers/projectile_manager.tscn" id="14_sb86y"]
 [ext_resource type="PackedScene" uid="uid://kjaxjcbyulvh" path="res://Art/UI/crt_effect.tscn" id="14_yhjpe"]
+[ext_resource type="PackedScene" uid="uid://bqr6mt7v20hyd" path="res://Scenes/Managers/enemy_manager.tscn" id="15_m2p7f"]
 
 [node name="GameStateController" type="Node" node_paths=PackedStringArray("level", "gui")]
 script = ExtResource("1_bsoci")
@@ -65,5 +66,7 @@ vfx_map = Dictionary[int, ParticleProcessMaterial]({
 })
 
 [node name="ProjectileManager" parent="Managers" instance=ExtResource("14_sb86y")]
+
+[node name="EnemyManager" parent="Managers" instance=ExtResource("15_m2p7f")]
 
 [node name="CRT Effect" parent="." instance=ExtResource("14_yhjpe")]

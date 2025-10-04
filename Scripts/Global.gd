@@ -5,6 +5,8 @@ var loading_screen = preload("res://Scenes/UI/loading.tscn")
 var game_state_controller: GameController
 var audio_manager: AudioManager
 var vfx_manager: VFXManager
+var projectile_manager: ProjectileManager
+var enemy_manager: EnemyManager
 
 var input_helper: InputHelper
 

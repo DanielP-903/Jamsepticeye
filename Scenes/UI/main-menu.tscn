@@ -36,7 +36,7 @@ size_flags_horizontal = 4
 size_flags_vertical = 0
 theme_override_constants/margin_top = 50
 
-[node name="Label" type="Label" parent="mainCanvas/titleContainer"]
+[node name="title" type="Label" parent="mainCanvas/titleContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
@@ -45,7 +45,7 @@ theme_override_constants/shadow_offset_x = 0
 theme_override_constants/shadow_offset_y = 10
 theme_override_fonts/font = ExtResource("3_qogjb")
 theme_override_font_sizes/font_size = 96
-text = "POSSESSION GAME"
+text = "SPELLTHEIF"
 
 [node name="mainMenuContainer" type="MarginContainer" parent="mainCanvas"]
 layout_mode = 2
