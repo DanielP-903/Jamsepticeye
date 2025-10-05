@@ -1,0 +1,5 @@
+audio attribution
+button click soft	Click_Soft_01.wav by LittleRobotSoundFactory -- https://freesound.org/s/288911/ -- License: Attribution 4.0
+firing sound	air_blast_med_double_1_1s.wav by typeoo -- https://freesound.org/s/521497/ -- License: Creative Commons 0
+game over	R2D2 Sad.wav by FullMetalJedi -- https://freesound.org/s/339102/ -- License: Creative Commons 0
+
