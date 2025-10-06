@@ -8,6 +8,7 @@ gravity = Vector3(0, 98, 0)
 
 [node name="VFXEmitter" type="GPUParticles2D"]
 emitting = false
+amount = 16
 lifetime = 0.5
 one_shot = true
 process_material = SubResource("ParticleProcessMaterial_pc5ky")

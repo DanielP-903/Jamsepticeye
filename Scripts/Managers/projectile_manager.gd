@@ -37,9 +37,7 @@ func spawn_projectile(position: Vector2, direction: Vector2, projectile_owner: C
 		print("uh oh, projectile should not be null!")
 		return projectile
 	else:
-		projectile.setup_projectile(position, direction)
-	# TODO
-	#projectile.owning_character = projectile_owner # Should be used for collision (aka don't collide with the owner)
+		projectile.setup_projectile(position, direction, projectile_owner)
 	return projectile
 
 func kill_all_projectiles() -> void:

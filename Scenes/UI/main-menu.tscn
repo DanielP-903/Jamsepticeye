@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bfly7dlnvh5b3"]
+[gd_scene load_steps=11 format=3 uid="uid://bfly7dlnvh5b3"]
 
 [ext_resource type="Script" uid="uid://b77krr6mejgu0" path="res://Scripts/main_menu_screen.gd" id="1_lyjc4"]
 [ext_resource type="Texture2D" uid="uid://rmst7ptyto0x" path="res://Art/UI/Final/background.png" id="2_1e43x"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://xstrim5farja" path="res://Art/UI/Vector/Extra/input_square.svg" id="5_uufuj"]
 [ext_resource type="StyleBox" uid="uid://d2qpn6ltwbu0d" path="res://Styles/options_button_normal.tres" id="6_ef2fd"]
 [ext_resource type="StyleBox" uid="uid://dqw3lurc05tmh" path="res://Styles/options_button_pressed.tres" id="7_yt2i1"]
+[ext_resource type="FontFile" uid="uid://bgnwlen7f7cjy" path="res://Art/Font/ari-w9500-condensed-bold.ttf" id="10_oqchj"]
 
 [node name="mainMenu" type="CanvasLayer"]
 
@@ -52,7 +53,7 @@ layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 4
 theme_override_constants/margin_left = 50
-theme_override_constants/margin_top = 300
+theme_override_constants/margin_top = 250
 
 [node name="VBoxContainer" type="VBoxContainer" parent="mainCanvas/mainMenuContainer"]
 custom_minimum_size = Vector2(400, 300)
@@ -180,7 +181,26 @@ theme_override_styles/focus = ExtResource("7_yt2i1")
 text = "Back"
 alignment = 0
 
+[node name="MarginContainer" type="MarginContainer" parent="mainCanvas"]
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_constants/margin_left = 60
+theme_override_constants/margin_bottom = 20
+
+[node name="Label" type="Label" parent="mainCanvas/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(1, 1, 1, 0.63529414)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("10_oqchj")
+theme_override_font_sizes/font_size = 20
+text = "By DanP_Games and DMNK"
+
+[connection signal="mouse_entered" from="mainCanvas/mainMenuContainer/VBoxContainer/playButton" to="mainCanvas" method="_on_hovered"]
 [connection signal="pressed" from="mainCanvas/mainMenuContainer/VBoxContainer/playButton" to="mainCanvas" method="_on_play_button_pressed"]
+[connection signal="mouse_entered" from="mainCanvas/mainMenuContainer/VBoxContainer/optionsButton" to="mainCanvas" method="_on_hovered"]
 [connection signal="pressed" from="mainCanvas/mainMenuContainer/VBoxContainer/optionsButton" to="mainCanvas" method="_on_options_button_pressed"]
+[connection signal="mouse_entered" from="mainCanvas/mainMenuContainer/VBoxContainer/exitButton" to="mainCanvas" method="_on_hovered"]
 [connection signal="pressed" from="mainCanvas/mainMenuContainer/VBoxContainer/exitButton" to="mainCanvas" method="_on_exit_button_pressed"]
 [connection signal="pressed" from="mainCanvas/optionsContainer/buttonContainer/VBoxContainer/goBackButton" to="mainCanvas" method="_on_go_back_button_pressed"]

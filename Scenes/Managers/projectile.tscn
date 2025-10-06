@@ -4,21 +4,25 @@
 [ext_resource type="Texture2D" uid="uid://d28dchqikcvle" path="res://Art/Tilesheets/colored-transparent.png" id="2_q3ye2"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_h1sad"]
+radius = 5.0
 
-[node name="Projectile" type="Node2D" node_paths=PackedStringArray("collider")]
-modulate = Color(1, 0.54901963, 0.24313726, 1)
+[node name="Projectile" type="Area2D" node_paths=PackedStringArray("sprite")]
+process_mode = 1
+collision_layer = 0
+collision_mask = 3
 script = ExtResource("1_87mem")
-collider = NodePath("Sprite2D/Area2D")
+projectile_lifetime = 50.0
+sprite = NodePath("Sprite2D")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 rotation = 2.3561945
+scale = Vector2(0.99999994, 0.99999994)
 texture = ExtResource("2_q3ye2")
+offset = Vector2(2, 2)
 region_enabled = true
 region_rect = Rect2(493, 187, 16, 16)
 
-[node name="Area2D" type="Area2D" parent="Sprite2D"]
-collision_layer = 128
-collision_mask = 16
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_h1sad")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -35,6 +35,8 @@ func play_music(music_type: Global.EMusicType):
 		music.stop()
 	music.stream = music_map[music_type]
 	music.play()
+	music.pitch_scale = 1.0
+	music.volume_linear = 1.0
 
 func stop_music() -> void:
 	if music.playing:
@@ -61,13 +63,13 @@ func _create_audio_source() -> AudioSource:
 	audio_pool.append(instance)
 	return instance
 
-func play_audio(audio_type: Global.EAudioType):
+func play_audio(audio_type: Global.EAudioType, new_volume: float = 1.0):
 	if audio_map.get(audio_type) == null:
 		push_error("Couldn't play " + Global.EAudioType.keys()[audio_type] + " because it doesn't exist in the audio_map!")
 		return
-	#print("Playing: " + Global.EAudioType.keys()[audio_type])
+	print("Playing: " + Global.EAudioType.keys()[audio_type])
 	var audio_source = _get_free_audio_from_pool()
-	audio_source.play_audio(audio_map[audio_type], audio_type)
+	audio_source.play_audio(audio_map[audio_type], audio_type, new_volume)
 
 func stop_audio(audio_type: Global.EAudioType) -> bool:
 	#print("Stopping: " + Global.EAudioType.keys()[audio_type])

@@ -1,0 +1,64 @@
+[gd_scene load_steps=7 format=3 uid="uid://donvpcy7gr85v"]
+
+[ext_resource type="Script" uid="uid://buxk6f4b6im2v" path="res://Scripts/Characters/character.gd" id="1_eu1pv"]
+[ext_resource type="Texture2D" uid="uid://d28dchqikcvle" path="res://Art/Tilesheets/colored-transparent.png" id="2_lmtek"]
+[ext_resource type="StyleBox" uid="uid://b1cewbfiqamdg" path="res://Styles/enemy_health_bar_bg.tres" id="3_7qr7h"]
+[ext_resource type="StyleBox" uid="uid://bminhj5l113ft" path="res://Styles/enemy_health_bar.tres" id="4_nv3ih"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jf14c"]
+size = Vector2(10, 10)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sdtny"]
+
+[node name="Character" type="CharacterBody2D" node_paths=PackedStringArray("collider", "overhead_health", "sprite", "possession_highlight_sprite", "possession_area")]
+process_mode = 1
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("1_eu1pv")
+collider = NodePath("collider")
+overhead_health = NodePath("MarginContainer/overheadHealthBar")
+sprite = NodePath("sprite")
+possession_highlight_sprite = NodePath("possessionHighlight")
+possession_area = NodePath("possessionHighlight/possessionArea")
+
+[node name="sprite" type="Sprite2D" parent="."]
+texture = ExtResource("2_lmtek")
+region_enabled = true
+region_rect = Rect2(409, 16, 16, 16)
+
+[node name="collider" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_jf14c")
+
+[node name="possessionHighlight" type="Sprite2D" parent="."]
+scale = Vector2(1.4641001, 1.4641001)
+texture = ExtResource("2_lmtek")
+region_enabled = true
+region_rect = Rect2(646, 204, 16, 16)
+region_filter_clip_enabled = true
+
+[node name="possessionArea" type="Area2D" parent="possessionHighlight"]
+collision_layer = 3
+collision_mask = 0
+
+[node name="possessionCollider" type="CollisionShape2D" parent="possessionHighlight/possessionArea"]
+shape = SubResource("RectangleShape2D_sdtny")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -10.0
+offset_top = -20.0
+offset_right = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="overheadHealthBar" type="ProgressBar" parent="MarginContainer"]
+custom_minimum_size = Vector2(0, 2)
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_styles/background = ExtResource("3_7qr7h")
+theme_override_styles/fill = ExtResource("4_nv3ih")
+show_percentage = false

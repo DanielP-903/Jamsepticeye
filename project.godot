@@ -10,7 +10,9 @@ config_version=5
 
 [application]
 
-config/name="Jamsepticeye"
+config/name="Spellthief"
+config/description="Made by DanP_Games and DMNK for the Jamspeticeye game jam 2025!"
+config/version="1.0"
 run/main_scene="uid://cxrj86kxbmqyf"
 config/features=PackedStringArray("4.5", "GL Compatibility")
 
@@ -109,3 +111,4 @@ possess={
 textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
+textures/vram_compression/import_etc2_astc=true

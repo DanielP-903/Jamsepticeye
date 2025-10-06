@@ -3,8 +3,16 @@ extends MarginContainer
 @export var quit_button: Button
 @export var retry_button: Button
 
+@export var waves_survived_text: Label
+@export var enemies_possessed_text: Label
+
 func on_opened() -> void:
 	retry_button.grab_focus()
+	
+	waves_survived_text.text = str(Global.enemy_manager.wave_number - 1)
+	enemies_possessed_text.text = str(Global.enemy_manager.enemies_defeated)
+	
+	Global.audio_manager.play_audio(Global.EAudioType.game_over)
 
 func _process(delta: float) -> void:
 	if !Global.game_state_controller.paused:
@@ -46,8 +54,10 @@ func _on_retry_button_pressed() -> void:
 	Global.game_state_controller.request_toggle_pause()
 	Global.game_state_controller.change_level(Global.ELevelType.MainLevel)
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	Global.audio_manager.play_audio(Global.EAudioType.button_click)
 
 func _on_quit_button_pressed() -> void:
 	Global.game_state_controller.request_toggle_pause()
 	Global.game_state_controller.change_level(Global.ELevelType.MainMenu)
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	Global.audio_manager.play_audio(Global.EAudioType.button_click)

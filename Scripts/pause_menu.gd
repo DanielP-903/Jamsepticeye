@@ -44,9 +44,11 @@ func _update_focus() -> void:
 
 func _on_resume_button_pressed() -> void:
 	Global.game_state_controller.request_toggle_pause()
+	Global.audio_manager.play_audio(Global.EAudioType.button_click)
 
 
 func _on_quit_button_pressed() -> void:
 	Global.game_state_controller.request_toggle_pause()
 	Global.game_state_controller.change_level(Global.ELevelType.MainMenu)
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	Global.audio_manager.play_audio(Global.EAudioType.button_click)

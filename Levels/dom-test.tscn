@@ -1,12 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://dc0rynfv23uuw"]
+[gd_scene load_steps=3 format=3 uid="uid://dc0rynfv23uuw"]
 
-[ext_resource type="PackedScene" uid="uid://cfqamaspdqwxd" path="res://Scenes/Characters/player.tscn" id="1_5fp2h"]
-[ext_resource type="PackedScene" uid="uid://donvpcy7gr85v" path="res://Scenes/Characters/enemy-cowboy.tscn" id="2_o8w5t"]
+[ext_resource type="PackedScene" uid="uid://donvpcy7gr85v" path="res://Scenes/Characters/character.tscn" id="2_o8w5t"]
 [ext_resource type="PackedScene" uid="uid://bgpqov155lul3" path="res://Scenes/ArenaBorder.tscn" id="3_flqso"]
 
 [node name="DomTest" type="Node2D"]
-
-[node name="Player" parent="." instance=ExtResource("1_5fp2h")]
 
 [node name="Enemy" parent="." instance=ExtResource("2_o8w5t")]
 position = Vector2(-100, -1)

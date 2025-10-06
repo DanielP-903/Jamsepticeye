@@ -6,6 +6,8 @@ class_name GameController extends Node
 @export var level: Node2D
 @export var gui: Control
 
+var current_player: CharacterCommon = null
+
 var current_level_scene
 var current_gui_scene
 
@@ -67,6 +69,24 @@ func game_over() -> void:
 	
 	if current_gui_scene is HUD:
 		current_gui_scene.show_game_over_screen()
+
+func get_hud() -> HUD:
+	if current_gui_scene and current_gui_scene is HUD:
+		return current_gui_scene
+	
+	return null
+
+func get_player() -> CharacterCommon:
+	return current_player
+
+func is_playing_game() -> bool:
+	if is_game_over || paused:
+		return false
+	
+	if current_level_type != Global.ELevelType.MainLevel:
+		return false
+	
+	return true
 
 ## UI Helpers START
 func button_hover(button: Button, tween_type: Global.EButtonTweenType, tween_amount, duration) -> void:
@@ -140,10 +160,16 @@ func change_level(level_type: Global.ELevelType, load_type: Global.ESceneChange 
 			# Clear all GUI for the loading process
 			current_gui_scene.queue_free()
 	
-	# Stop all audio / vfx
+	# Stop all manager stuff
 	Global.audio_manager.stop_all_audio(true)
 	Global.vfx_manager.stop_all_vfx()
-	
+	Global.projectile_manager.kill_all_projectiles()
+	Global.enemy_manager.kill_all_enemies()
+
+	is_game_over = false
+	paused = false
+	get_tree().paused = false
+
 	# Create the new level
 	var loading_screen = Global.loading_screen.instantiate()
 	gui.add_child(loading_screen)

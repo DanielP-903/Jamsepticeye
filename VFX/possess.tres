@@ -1,0 +1,15 @@
+[gd_resource type="ParticleProcessMaterial" format=3 uid="uid://bsp0lf51pgrlb"]
+
+[resource]
+lifetime_randomness = 1.0
+emission_shape_offset = Vector3(0, 10, 0)
+emission_shape = 3
+emission_box_extents = Vector3(10, 1, 1)
+direction = Vector3(0, -1, 0)
+flatness = 1.0
+initial_velocity_min = 120.0
+initial_velocity_max = 120.0
+gravity = Vector3(0, 4.9, 0)
+radial_accel_min = -2.2351742e-06
+radial_accel_max = -2.2351742e-06
+color = Color(0.23921569, 0.84705883, 0.91764706, 0.78431374)

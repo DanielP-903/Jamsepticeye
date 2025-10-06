@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://cxrj86kxbmqyf"]
+[gd_scene load_steps=24 format=3 uid="uid://cxrj86kxbmqyf"]
 
 [ext_resource type="Script" uid="uid://ba6rqq4tnkajp" path="res://Scripts/game_state_controller.gd" id="1_bsoci"]
 [ext_resource type="PackedScene" uid="uid://degg2nfo0e4jm" path="res://Levels/main-menu-level.tscn" id="2_agskk"]
@@ -6,13 +6,20 @@
 [ext_resource type="PackedScene" uid="uid://bn828tuc2a4h8" path="res://Levels/main-level.tscn" id="2_qlvke"]
 [ext_resource type="PackedScene" uid="uid://bfly7dlnvh5b3" path="res://Scenes/UI/main-menu.tscn" id="3_agskk"]
 [ext_resource type="PackedScene" uid="uid://cry85lo8nj33d" path="res://Scenes/Managers/audio_manager.tscn" id="3_vx0ma"]
+[ext_resource type="PackedScene" uid="uid://csbc62e5c4cra" path="res://Scenes/UI/loading.tscn" id="4_4twle"]
 [ext_resource type="PackedScene" uid="uid://cd1ps5l7113me" path="res://Scenes/UI/hud.tscn" id="4_tar38"]
-[ext_resource type="AudioStream" uid="uid://byf8x374ukxhw" path="res://Audio/UI Sounds/switch-a.ogg" id="4_vx0ma"]
-[ext_resource type="AudioStream" uid="uid://cirt6rux5foiw" path="res://Audio/UI Sounds/click-b.ogg" id="5_r6h11"]
 [ext_resource type="AudioStream" uid="uid://bpsvov2m08ahr" path="res://Audio/Music/level_music.wav" id="6_r6h11"]
 [ext_resource type="PackedScene" uid="uid://d3qumjacxcqr2" path="res://Scenes/Managers/vfx_manager.tscn" id="7_i70vg"]
-[ext_resource type="Material" uid="uid://swrn15cgxw2x" path="res://VFX/sparkles.tres" id="8_8of2d"]
+[ext_resource type="AudioStream" uid="uid://bsa0vw450u41o" path="res://Audio/UI Sounds/button click soft.wav" id="8_6c704"]
+[ext_resource type="Material" uid="uid://swrn15cgxw2x" path="res://VFX/hurt.tres" id="8_8of2d"]
+[ext_resource type="Material" uid="uid://bsp0lf51pgrlb" path="res://VFX/possess.tres" id="8_wvkpw"]
+[ext_resource type="AudioStream" uid="uid://l0mjfuq1gn2f" path="res://Audio/firing sound.wav" id="9_almib"]
+[ext_resource type="AudioStream" uid="uid://dkafeamae62x0" path="res://Audio/UI Sounds/tap-a.ogg" id="10_6sp6q"]
+[ext_resource type="AudioStream" uid="uid://pbffhwbutnb2" path="res://Audio/game over.wav" id="10_jxbtt"]
+[ext_resource type="AudioStream" uid="uid://68dnknpryw2p" path="res://Audio/damage enemy.mp3" id="11_almib"]
+[ext_resource type="AudioStream" uid="uid://bm2qog34uakxa" path="res://Audio/kill enemy.wav" id="11_iut3j"]
 [ext_resource type="AudioStream" uid="uid://dblvbb0svhyma" path="res://Audio/Music/menu_music.mp3" id="11_tar38"]
+[ext_resource type="AudioStream" uid="uid://3j0hgcrw8thf" path="res://Audio/possess.wav" id="13_4twle"]
 [ext_resource type="PackedScene" uid="uid://bfcs11l03vmht" path="res://Scenes/Managers/projectile_manager.tscn" id="14_sb86y"]
 [ext_resource type="PackedScene" uid="uid://kjaxjcbyulvh" path="res://Art/UI/crt_effect.tscn" id="14_yhjpe"]
 [ext_resource type="PackedScene" uid="uid://bqr6mt7v20hyd" path="res://Scenes/Managers/enemy_manager.tscn" id="15_m2p7f"]
@@ -21,7 +28,8 @@
 script = ExtResource("1_bsoci")
 level_defs = Dictionary[int, PackedScene]({
 1: ExtResource("2_agskk"),
-2: ExtResource("2_qlvke")
+2: ExtResource("2_qlvke"),
+3: ExtResource("4_4twle")
 })
 gui_defs = Dictionary[int, PackedScene]({
 1: ExtResource("3_agskk"),
@@ -52,8 +60,14 @@ metadata/_custom_type_script = "uid://dp1m2cc5xqym6"
 
 [node name="AudioManager" parent="Managers" instance=ExtResource("3_vx0ma")]
 audio_map = Dictionary[int, AudioStream]({
-1: ExtResource("4_vx0ma"),
-2: ExtResource("5_r6h11")
+1: ExtResource("8_6c704"),
+2: ExtResource("10_6sp6q"),
+3: ExtResource("9_almib"),
+4: ExtResource("10_jxbtt"),
+5: ExtResource("11_almib"),
+6: ExtResource("11_iut3j"),
+7: ExtResource("11_almib"),
+8: ExtResource("13_4twle")
 })
 music_map = Dictionary[int, AudioStream]({
 1: ExtResource("6_r6h11"),
@@ -62,7 +76,8 @@ music_map = Dictionary[int, AudioStream]({
 
 [node name="VFXManager" parent="Managers" instance=ExtResource("7_i70vg")]
 vfx_map = Dictionary[int, ParticleProcessMaterial]({
-1: ExtResource("8_8of2d")
+1: ExtResource("8_8of2d"),
+2: ExtResource("8_wvkpw")
 })
 
 [node name="ProjectileManager" parent="Managers" instance=ExtResource("14_sb86y")]

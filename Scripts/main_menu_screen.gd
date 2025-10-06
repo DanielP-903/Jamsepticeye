@@ -28,14 +28,6 @@ func _process(delta: float) -> void:
 		
 	title.position = Vector2(title.position.x, sin(title_pulse) * -5.0)
 
-func _unhandled_input(event: InputEvent) -> void:
-	if event.is_action_pressed("ui_cancel"):
-		Global.audio_manager.play_audio(Global.EAudioType.test1)
-	if event.is_action_pressed("ui_accept"):
-		Global.audio_manager.play_audio(Global.EAudioType.test2)
-	if event.is_action_pressed("fire"):
-		Global.audio_manager.stop_all_audio()
-
 func _update_focus() -> void:
 	if Global.input_helper.is_using_mouse():
 		if Input.mouse_mode != Input.MOUSE_MODE_VISIBLE:
@@ -66,15 +58,22 @@ func _update_buttons() -> void:
 
 func _on_play_button_pressed() -> void:
 	Global.game_state_controller.change_level(Global.ELevelType.MainLevel)
+	Global.audio_manager.play_audio(Global.EAudioType.button_click)
 
 func _on_options_button_pressed() -> void:
 	Global.game_state_controller.toggle_visibility(main_menu)
 	Global.game_state_controller.toggle_visibility(options_menu)
+	Global.audio_manager.play_audio(Global.EAudioType.button_click)
 
 func _on_exit_button_pressed() -> void:
+	Global.audio_manager.play_audio(Global.EAudioType.button_click)
 	get_tree().quit()
-
 
 func _on_go_back_button_pressed() -> void:
 	Global.game_state_controller.toggle_visibility(main_menu)
 	Global.game_state_controller.toggle_visibility(options_menu)
+	Global.audio_manager.play_audio(Global.EAudioType.button_click)
+
+
+func _on_hovered() -> void:
+	Global.audio_manager.play_audio(Global.EAudioType.button_hover)

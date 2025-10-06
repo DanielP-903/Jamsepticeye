@@ -38,6 +38,10 @@ func play_vfx(vfx_type: Global.EVFXType, pos: Vector2 = Vector2.ZERO) -> void:
 		return
 	#print("Playing: " + Global.EVFXType.keys()[vfx_type])
 	var vfx_emitter = _get_free_vfx_from_pool()
+	if vfx_type == Global.EVFXType.hurt:
+		vfx_emitter.lifetime = 0.15
+	else:
+		vfx_emitter.lifetime = 0.3
 	vfx_emitter.play_vfx(vfx_map[vfx_type], vfx_type, pos)
 
 func stop_audio(vfx_type: Global.EVFXType) -> bool:

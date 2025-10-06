@@ -1,0 +1,16 @@
+[gd_resource type="ParticleProcessMaterial" format=3 uid="uid://swrn15cgxw2x"]
+
+[resource]
+emission_shape = 6
+emission_ring_axis = Vector3(0, 0, 1)
+emission_ring_height = 1.0
+emission_ring_radius = 1.0
+emission_ring_inner_radius = 0.0
+emission_ring_cone_angle = 90.0
+direction = Vector3(0, 0, 0)
+initial_velocity_min = 120.0
+initial_velocity_max = 120.0
+gravity = Vector3(0, 4.9, 0)
+radial_accel_min = -2.2351742e-06
+radial_accel_max = -2.2351742e-06
+color = Color(0.8980759, 0.30765724, 0.32578322, 0.78431374)

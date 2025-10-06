@@ -20,9 +20,10 @@ func deactivate() -> void:
 func is_active() -> bool:
 	return active
 
-func play_audio(new_stream: AudioStream, type) -> void:
+func play_audio(new_stream: AudioStream, type, new_volume) -> void:
 	stream = new_stream
 	audio_type = type
+	volume_linear = new_volume
 	play()
 
 func _on_stream_finished(_stream: AudioStreamPlayer2D) -> void:
