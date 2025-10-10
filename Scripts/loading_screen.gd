@@ -12,6 +12,7 @@ func begin_loading(world_name: String, type: Global.ELevelType):
 	to_load = world_name
 	loading_level_type = type
 	ResourceLoader.load_threaded_request(to_load)
+	print("begun loading")
 	
 func _process(delta: float):
 	if finished_loading:
@@ -24,8 +25,10 @@ func _process(delta: float):
 	ResourceLoader.load_threaded_get_status(to_load, progress)
 	
 	progressBar.value = progress[0] * 100
-	
+	print("loading " + str(progressBar.value) + "%")
+
 	if progress[0] == 1:
 		finished_loading = true
 		finished_time = Time.get_ticks_msec()
+		print("finished loading")
 	

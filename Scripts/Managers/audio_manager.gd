@@ -23,7 +23,6 @@ func _ready() -> void:
 func _create_music():
 	music = AudioStreamPlayer2D.new()
 	music.name = "Music"
-	music.bus = "Music"
 	add_child(music)
 
 func play_music(music_type: Global.EMusicType):
@@ -57,7 +56,6 @@ func _get_free_audio_from_pool() -> AudioSource:
 func _create_audio_source() -> AudioSource:
 	var instance: AudioSource = audio_source_scene.instantiate()
 	instance.name = "Audio" + str(audio_pool.size())
-	instance.bus = "Sound"
 	instance.deactivate()
 	add_child(instance)
 	audio_pool.append(instance)

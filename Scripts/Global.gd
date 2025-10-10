@@ -1,6 +1,6 @@
 extends Node
 
-var loading_screen = preload("res://Scenes/UI/loading.tscn")
+var loading_screen = load("res://Scenes/UI/loading.tscn")
 
 var friendly_colour: Color = Color(0.0, 0.76470588235, 0.86274509803, 1.0)
 var enemy_colour: Color = Color(1.0, 0.54901960784, 0.2431372549, 1.0)

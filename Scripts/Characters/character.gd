@@ -20,6 +20,11 @@ func activate() -> void:
 	
 	possession_highlight_sprite.self_modulate = Color.TRANSPARENT
 	
+	if !is_possessed:
+		overhead_health.show()
+	else:
+		overhead_health.hide()
+	
 	self.show()
 	
 	last_enemy_fire_time = Time.get_ticks_msec()
@@ -42,6 +47,9 @@ func deactivate() -> void:
 	set_deferred("disabled", true)
 	
 	overhead_health.value = 0
+	overhead_health.hide()
+	
+	is_possessed = false
 
 	self.hide()
 	

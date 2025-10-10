@@ -30,10 +30,9 @@ func _ready() -> void:
 		is_possessed = true
 		Global.game_state_controller.current_player = self
 		(self as Character).activate()
-		(self as Character).overhead_health.hide()
 	else:
+		is_possessed = false
 		(self as Character).deactivate()
-		(self as Character).overhead_health.show()
 
 func _physics_process(_delta) -> void:
 	if(!ignore_physics_tick):
